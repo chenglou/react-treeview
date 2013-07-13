@@ -1,0 +1,16 @@
+{
+  "name": "react-treeview",
+  "version": "0.0.0",
+  "main": "index.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "~0.3.3"
+  }
+}
