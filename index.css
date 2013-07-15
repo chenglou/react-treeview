@@ -1,0 +1,17 @@
+.treenode-collapsed {
+  display: none;
+}
+
+.treeNode {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  cursor: pointer;
+}
+
+.treenode-arrow {
+  padding-right: 6px;
+  display: inline-block;
+  width: 9px;
+}
