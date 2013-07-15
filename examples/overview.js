@@ -10,8 +10,10 @@ var food = <TreeNode>Edible stuff</TreeNode>;
 React.renderComponent(food, document.body);
 
 // some regular nodes... remember, any element can be appended, as long as you
-// wrap it inside a TreeNode tag
-var pastry = food.append(<TreeNode><div>Pastry</div></TreeNode>);
+// wrap it inside a TreeNode tag. If you're appending a `div` or any other
+// `display: block` element, it's wiser to change it inline, otherwise the
+// element wouldn't be on the same line as the collapse arrow on the left
+var pastry = food.append(<TreeNode><span>Pastry</span></TreeNode>);
 var dessert = food.append(<TreeNode>Dessert</TreeNode>);
 
 // forgot entrées
@@ -34,9 +36,9 @@ pastry.parent(); // => gives the food node
 // variable, no problem
 food.childAt(0).append(
   <TreeNode>
-    <div className="overkill-tree-item">
+    <span className="overkill-tree-item">
       <a href="google.com/search?q=cake">Cake</a>
-    </div>
+    </span>
   </TreeNode>
 );
 
@@ -53,3 +55,5 @@ dessert.childAt(0).removeSelf();
 // - same api methods as using a number to access nodes
 food.childAt(puddingUid); // => the pudding node
 food.removeAt(puddingUid);
+
+food.removeSelf() // woah, illegal operation and bad style
