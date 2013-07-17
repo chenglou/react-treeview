@@ -20,6 +20,44 @@
 */
 
 var TreeView = React.createClass({
+  getInitialState: function() {
+    var self = this;
+    // var source = this.props.source.map(function(item) {
+    //   return self._formatSourceProp(item);
+    // });
+    return {source: this.props.source};
+  },
+  // componentDidMount: function() {
+  //   var self = this;
+  //   this.state.source.forEach(function(item) {
+  //     self._assignIdTo(item);
+  //   });
+  // },
+  componentWillReceiveProps: function(nextProps) {
+  //   var self = this;
+  //   console.log('ok');
+  //   this.state.source.forEach(function(item) {
+  //     self._assignIdTo(item);
+  //   });
+    var self = this;
+    // var source = nextProps.source.map(function(item) {
+    //   return self._formatSourceProp(item);
+    // });
+
+    this.setState({'source': nextProps.source});
+    // console.log(source);
+    // this.setState({'source': source});
+  },
+  // _assignIdTo: function(child) {
+  //   var self = this;
+  //   // no key means new child. Give it a uid
+  //   if(child.displayNode && !child.displayNode.props.key) {
+  //     // child.displayNode.props.key = Math.random();
+  //   }
+  //   child.children && child.children.forEach(function(subChild) {
+  //     self._assignIdTo(subChild);
+  //   });
+  // },
   render: function() {
     var self = this;
     // parse the data. format:
@@ -27,28 +65,35 @@ var TreeView = React.createClass({
     //   {displayNode: bla, children: [bla, bla]},
     //   {displayNode: bla, children: [bla, bla]},
     // ]
-    var wholeTree = this.props.data.map(function(item) {
-      return self._mapChildren(item);
+
+    var wholeTree = this.state.source.map(function(item) {
+      return self._formatSourceProp(item);
     });
     return (
       <div className={this.props.className}>{wholeTree}</div>
     );
   },
-  _mapChildren: function(child) {
+  _formatSourceProp: function(child) {
     // recursively construct the markup by digging into child nodes
     var self = this;
+    // if (!child.displayNode.props.key) {
+    //   child.displayNode.props.key = Math.random();
+    // }
+    if (!child.displayNode.props.key) {
+      child.displayNode.props.key = Math.random();
+    }
     return (
       // `initiallyCollapsed` works only at the beginning, If `canToggle` is set
       // to true, the tree node will naturally manage its expanded/collapsed
       // state itself afterward
-      <TreeNode
+      <TreeNode key={child.displayNode.props.key}
       displayNode={child.displayNode}
       initiallyCollapsed={child.initiallyCollapsed}
       canToggle={child.canToggle == null ? true : child.canToggle}>
         {
           (child.children && child.children.length)
             ? child.children.map(function(subChild) {
-                return self._mapChildren(subChild);
+                return self._formatSourceProp(subChild);
               })
             : null
         }
@@ -109,7 +154,7 @@ var FruitNode = React.createClass({
     );
   },
   handleClick: function() {
-    console.log('This fruit\'s color is ' + this.props.source.color);
+    console.log('This fruit\'s color is ' + this.state.source.color);
   }
 });
 
@@ -122,7 +167,7 @@ var VeggyNode = React.createClass({
     );
   },
   handleClick: function() {
-    console.log('This vegetable is ' + this.props.source.size);
+    console.log('This vegetable is ' + this.state.source.size);
   }
 });
 
@@ -135,42 +180,83 @@ var potatoData = {price: 1, size: 'big'};
 var carrotData = {price: 2, size: 'small'};
 var celeryData = {price: 3, size: 'small'};
 
+// var data = [
+//   {
+//     displayNode: <b>Fruits</b>,
+//     canToggle: false, // make it always expanded
+//     children: [
+//       {displayNode: <FruitNode source={orangeData}>Orange</FruitNode>},
+//       {displayNode: <FruitNode source={tomatoData}><i>Tomato?</i></FruitNode>},
+//       {displayNode: <FruitNode source={appleData}>Apple</FruitNode>}
+//     ]
+//   },
+//   {
+//     displayNode: <b>Vegetables</b>,
+//     initiallyCollapsed: true,
+//     children: [
+//       {
+//         displayNode:
+//           (<VeggyNode source={potatoData}>
+//             <a href="google.com/search?q=potato">Potato</a>
+//           </VeggyNode>)
+//       },
+//       {
+//         displayNode:
+//           (<VeggyNode source={carrotData}>
+//             <span className="favorite">Carrot</span>
+//           </VeggyNode>)
+//       },
+//       {displayNode: <VeggyNode source={celeryData}>Celery</VeggyNode>}
+//     ]
+//   }
+// ];
+
 var data = [
   {
     displayNode: <b>Fruits</b>,
     canToggle: false, // make it always expanded
     children: [
-      {displayNode: <FruitNode source={orangeData}>Orange</FruitNode>},
-      {displayNode: <FruitNode source={tomatoData}><i>Tomato?</i></FruitNode>},
-      {displayNode: <FruitNode source={appleData}>Apple</FruitNode>}
+      {displayNode: <span>Orange</span>},
+      {displayNode: <i>Tomato?</i>},
+      {displayNode: <span>Apple</span>}
     ]
   },
   {
     displayNode: <b>Vegetables</b>,
-    initiallyCollapsed: true,
+    // initiallyCollapsed: true,
     children: [
-      {
-        displayNode:
-          (<VeggyNode source={potatoData}>
-            <a href="google.com/search?q=potato">Potato</a>
-          </VeggyNode>)
-      },
-      {
-        displayNode:
-          (<VeggyNode source={carrotData}>
-            <span className="favorite">Carrot</span>
-          </VeggyNode>)
-      },
-      {displayNode: <VeggyNode source={celeryData}>Celery</VeggyNode>}
+      {displayNode: <a href="google.com/search?q=potato">Potato</a>},
+      {displayNode: <span className="favorite">Carrot</span>},
+      {displayNode: <span>Celery</span>}
     ]
   }
 ];
 
-var food = (
-  <TreeView data={data}/>
-);
+var food = <TreeView source={data}/>;
 
 React.renderComponent(food, document.body);
+
+
+setInterval(function() {
+  data[0].canToggle = true;
+  data[0].children.shift();
+  data[0].children.unshift({displayNode: <span>{Math.random()}</span>});
+  React.renderComponent(food, document.body);
+}, 1400);
+
+
+
+setTimeout(function() {
+  data.splice(0,1);
+  React.renderComponent(food, document.body);
+}, 2000);
+
+
+
+
+
+
+
 
 
 
