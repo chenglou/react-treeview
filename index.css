@@ -10,10 +10,6 @@
   cursor: pointer;
 }
 
-.hoverable:hover {
-  background-color: rgb(215, 248, 240);
-}
-
 .treenode-arrow {
   margin-right: 6px;
   display: inline-block;
