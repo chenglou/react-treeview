@@ -37,20 +37,6 @@ var TreeView = React.createClass({
   _mapChildren: function(child) {
     // recursively construct the markup by digging into child nodes
     var self = this;
-    // return (
-    //   <div className="treenode" onClick={this.toggle}>
-    //     {arrow}
-    //     {child.displayNode}
-    //     {
-    //       (child.children && child.children.length)
-    //         ? child.children.map(function(subChild) {
-    //             return <ul>{self._mapChildren(subChild)}</ul>;
-    //           })
-    //         : null
-    //     }
-    //   </div>
-    // );
-
     return (
       // `initiallyCollapsed` works only at the beginning, If `canToggle` is set
       // to true, the tree node will naturally manage its expanded/collapsed
@@ -95,9 +81,9 @@ var TreeNode = React.createClass({
       </div>
     );
     return (
-      <ul className="treenode" onClick={this.toggle}>
+      <ul className="treenode">
         {arrow}
-        {this.props.displayNode}
+        <span onClick={this.toggle}>{this.props.displayNode}</span>
         <div className={this.state.collapsed ? "treenode-collapsed" : ""}>
           {this.props.children}
         </div>
@@ -111,31 +97,84 @@ var TreeNode = React.createClass({
   }
 });
 
+
+
+
+var FruitNode = React.createClass({
+  render: function() {
+    return this.transferPropsTo(
+      <span onClick={this.handleClick}>
+        {this.props.children}
+      </span>
+    );
+  },
+  handleClick: function() {
+    console.log('This fruit\'s color is ' + this.props.source.color);
+  }
+});
+
+var VeggyNode = React.createClass({
+  render: function() {
+    return this.transferPropsTo(
+      <span onClick={this.handleClick}>
+        {this.props.children}
+      </span>
+    );
+  },
+  handleClick: function() {
+    console.log('This vegetable is ' + this.props.source.size);
+  }
+});
+
+
+var orangeData = {flavor: 'hum-um', color: 'orange'};
+var tomatoData = {flavor: 'ok', color: 'red'};
+var appleData = {flavor: 'hum-um', color: 'silver'};
+
+var potatoData = {price: 1, size: 'big'};
+var carrotData = {price: 2, size: 'small'};
+var celeryData = {price: 3, size: 'small'};
+
 var data = [
   {
-    displayNode: <b className="hoverable">Fruits</b>,
+    displayNode: <b>Fruits</b>,
+    canToggle: false, // make it always expanded
     children: [
-      {displayNode: 'Orange'}, // bare string are wrapped in span in React
-      {displayNode: <i className="hoverable">Tomato?</i>},
-      {displayNode: 'Apple'}
+      {displayNode: <FruitNode source={orangeData}>Orange</FruitNode>},
+      {displayNode: <FruitNode source={tomatoData}><i>Tomato?</i></FruitNode>},
+      {displayNode: <FruitNode source={appleData}>Apple</FruitNode>}
     ]
   },
   {
     displayNode: <b>Vegetables</b>,
     initiallyCollapsed: true,
     children: [
-      {displayNode: <a href="google.com/search?q=potato">Potato</a>},
-      {displayNode: <span className="favorite hoverable">Carrot</span>},
-      {displayNode: 'Celery'}
+      {
+        displayNode:
+          (<VeggyNode source={potatoData}>
+            <a href="google.com/search?q=potato">Potato</a>
+          </VeggyNode>)
+      },
+      {
+        displayNode:
+          (<VeggyNode source={carrotData}>
+            <span className="favorite">Carrot</span>
+          </VeggyNode>)
+      },
+      {displayNode: <VeggyNode source={celeryData}>Celery</VeggyNode>}
     ]
   }
 ];
 
-var fruits = (
-  <TreeView data={data} className="tree"/>
+var food = (
+  <TreeView data={data}/>
 );
 
-React.renderComponent(fruits, document.body);
+React.renderComponent(food, document.body);
+
+
+
+
 
 // var ClickItem = React.createClass({
 //   getInitialState: function() {
