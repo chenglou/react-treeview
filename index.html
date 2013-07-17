@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/docs/assets/css/bootstrap.css">
+</head>
+<body>
+
+<div class="tree1">test1</div>
+<div class="tree2">test2</div>
+
+<script src="bower_components/react/react.js"></script>
+<script src="bower_components/react/JSXTransformer.js"></script>
+
+<script type="text/jsx">
+/**
+* @jsx React.DOM
+*/
+
+var TreeView = React.createClass({
+  render: function() {
+    var self = this;
+    // parse the data. format:
+    // [
+    //   {displayNode: bla, children: [bla, bla]},
+    //   {displayNode: bla, children: [bla, bla]},
+    // ]
+    var wholeTree = this.props.data.map(function(item) {
+      return self._mapChildren(item);
+    });
+    return (
+      <div className={this.props.className}>{wholeTree}</div>
+    );
+  },
+  _mapChildren: function(child) {
+    // recursively construct the markup by digging into child nodes
+    var self = this;
+    // return (
+    //   <div className="treenode" onClick={this.toggle}>
+    //     {arrow}
+    //     {child.displayNode}
+    //     {
+    //       (child.children && child.children.length)
+    //         ? child.children.map(function(subChild) {
+    //             return <ul>{self._mapChildren(subChild)}</ul>;
+    //           })
+    //         : null
+    //     }
+    //   </div>
+    // );
+
+    return (
+      <TreeNode displayNode={child.displayNode}>
+        {
+          (child.children && child.children.length)
+            ? child.children.map(function(subChild) {
+                return self._mapChildren(subChild);
+              })
+            : null
+        }
+      </TreeNode>
+    );
+  },
+  appendAt: function(index, node) {
+    node.props.key = this._generateUid();
+    node.props.parent = this;
+    this.state.childNodes.splice(index, 0, node);
+    this.forceUpdate();
+
+    // trigger event to self
+    node.props.onAppend && node.props.onAppend();
+    // trigger necessary events to parent
+    this.props.onChildAppend && this.props.onChildAppend(node);
+    var parent = this.parent();
+    // bubble up the event to parent
+    parent
+      && parent.props.onChildAppend
+      && parent.props.onChildAppend(node);
+    return node;
+  },
+  append: function(node) {
+    this.appendAt(this.state.childNodes.length, node);
+    return node;
+  },
+  childAt: function(index) {
+    var nodeToReturn;
+    if (typeof index === 'number') {
+      nodeToReturn = this.state.childNodes[index];
+    } else if (typeof index === 'string') {
+      var nodeAndIndex = this._findNodeAndIndexUsingUid(index, this);
+      nodeToReturn = nodeAndIndex[0];
+    }
+    return nodeToReturn;
+  },
+  removeAt: function(index) {
+    var nodeToRemove;
+    if (typeof index === 'number') {
+      nodeToRemove = this.state.childNodes.splice(index, 1)[0];
+      this.forceUpdate();
+    } else if (typeof index === 'string') {
+      var nodeAndIndex = this._findNodeAndIndexUsingUid(index, this);
+      if (nodeAndIndex) {
+        nodeToRemove = nodeAndIndex[0];
+        var nodeIndex = nodeAndIndex[1];
+        // will come back t the number case
+        nodeToRemove.parent().removeAt(nodeIndex);
+      }
+    }
+
+    // trigger event to self
+    nodeToRemove.props.onRemove && nodeToRemove.props.onRemove();
+    // trigger necessary events to parent
+    this.props.onChildRemove && this.props.onChildRemove(nodeToRemove);
+    var parent = this.parent();
+    // bubble up the event to parent
+    parent
+      && parent.props.onChildRemove
+      && parent.props.onChildRemove(nodeToRemove);
+    return nodeToRemove;
+  },
+  // start searching from root
+  _findNodeAndIndexUsingUid: function(uid, root) {
+    // kind of bad to access children's state directly, but we're assuming
+    // they're all `TreeView`s
+    var childNodes = root.state.childNodes;
+    for (var i = 0; i < childNodes.length; i++) {
+      var currentNode = childNodes[i];
+      if (currentNode.props.key === uid) {
+        return [currentNode, i];
+      }
+      var foundNodeAndIndex = this._findNodeAndIndexUsingUid(uid, currentNode);
+      if (foundNodeAndIndex) {
+        return foundNodeAndIndex;
+      }
+    }
+    return undefined;
+  },
+  getUid: function() {
+    return this.props.key;
+  },
+  _generateUid: function() {
+    // piggy riding React's native key prop on components. The nodes are
+    // identified this way
+    return Math.random().toString(36).slice(2, 20);
+  },
+  parent: function() {
+    return this.props.parent;
+  },
+  removeSelf: function() {
+    // make parent remove this using the uid
+    if (!this.parent()) {
+      // unless parent isn't set correctly, this means this is a root node
+      throw new Error('treeview cannot remove itself.');
+    } else {
+      this.parent().removeAt(this.props.key);
+    }
+  }
+});
+
+var TreeNode = React.createClass({
+  getDefaultProps: function() {
+    return {collapsed: false};
+  },
+  getInitialState: function() {
+    return {collapsed: this.props.collapsed};
+  },
+  render: function() {
+    var arrow = (
+      <div className="treenode-arrow">
+        {this.props.children && this.props.children.length
+          ? this.state.collapsed ? '▸' : '▾'
+          : null}
+      </div>
+    );
+    return (
+      <ul className="treenode" onClick={this.toggle}>
+        {arrow}
+        {this.props.displayNode}
+        <div className={this.state.collapsed ? "treenode-collapsed" : ""}>
+          {this.props.children}
+        </div>
+      </ul>
+    );
+  },
+  toggle: function() {
+    this.setState({collapsed: !this.state.collapsed});
+  }
+});
+
+var data = [
+  {
+    displayNode: <b className="hoverable">Fruits</b>,
+    children: [
+      {displayNode: 'Orange'}, // bare string are wrapped in span in React
+      {displayNode: <i className="hoverable">Tomato?</i>},
+      {displayNode: 'Apple'}
+    ]
+  },
+  {
+    displayNode: <b>Vegetables</b>,
+    children: [
+      {displayNode: <a href="google.com/search?q=potato">Potato</a>},
+      {displayNode: <span className="favorite hoverable">Carrot</span>},
+      {displayNode: 'Celery'}
+    ]
+  }
+];
+
+var fruits = (
+  <TreeView data={data} className="tree"/>
+);
+
+React.renderComponent(fruits, document.body);
+
+// var ClickItem = React.createClass({
+//   getInitialState: function() {
+//     return {menuVisible: false};
+//   },
+//   componentDidMount: function(el) {
+//     var self = this;
+//     el.addEventListener('click', function() {
+//       self.setState({'menuVisible': false});
+//     });
+//     el.addEventListener('contextmenu', function(e) {
+//       self.setState({
+//         'menuVisible': true,
+//         'left': e.pageX - el.offsetLeft,
+//         'top': e.pageY - el.offsetTop
+//       });
+//       e.preventDefault();
+//       return false;
+//     });
+//   },
+//   render: function() {
+//     var menu = this.state.menuVisible
+//       ? (<SuperMenu
+//         top={this.state.top}
+//         left={this.state.left + 50}
+//         onClick={this.props.thingClicked}>
+//         </SuperMenu>)
+//       : '';
+//     return (
+//       <span>
+//         yo click me
+//         {menu}
+//       </span>
+//     );
+//   },
+
+// });
+
+
+// var SuperMenu = React.createClass({
+//   render: function() {
+//     var style = {
+//       position: 'absolute',
+//       top: this.props.top + 50 + 'px',
+//       left: this.props.left + 75 + 'px',
+//       backgroundColor: 'white',
+//       zIndex: '999'
+//     };
+//     return (
+//       <div style={style}>
+//         <div>test1</div>
+//         <div>test2</div>
+//         <div onMouseDown={this.props.onClick}>test3</div>
+//       </div>
+//     );
+//   }
+// });
+
+
+
+// var food = <TreeView>Food</TreeView>;
+// React.renderComponent(food, document.body);
+
+// var pastry = food.append(<TreeView><span>Pastry</span></TreeView>);
+// var dessert = food.append(<TreeView>Dessert</TreeView>);
+
+// food.appendAt(0, <TreeView><i>Entrée</i></TreeView>);
+
+// ['Ice Cream', 'Pudding', 'Chicken'].forEach(function(item) {
+//   dessert.append(<TreeView><i>{item}</i></TreeView>);
+// });
+// dessert.toggle();
+// dessert.toggle();
+
+// dessert.parent().childAt(0);
+
+
+// food.childAt(0).append(
+//   <TreeView>
+//     <a href="google.com/search?q=cake">Cake</a>
+//   </TreeView>
+// );
+
+
+// dessert.childAt(0).removeSelf();
+
+// var puddingUid = dessert.childAt(0).getUid();
+// food.childAt(puddingUid);
+// food.removeAt(puddingUid);
+
+// food.removeSelf();
+
+
+
+
+
+
+
+// var App = React.createClass({
+//   getInitialState: function() {
+//     return {wholeTree: true};
+//   },
+//   componentDidMount: function() {
+//     var apple = <TreeView onChildRemove={handleChildRemoved}>apple</TreeView>;
+//     this.refs.fruits.append(apple);
+//     // // trigger on fruits
+//     apple.append(
+//       <TreeView
+//       onRemove={handleRemove}
+//       onAppend={handleAppend}>
+//         <ClickItem
+//         thingClicked={this.wholeTree}>
+//           red
+//         </ClickItem>
+//       </TreeView>
+//     );
+//   },
+//   render: function() {
+//     var fruits = (
+//       <TreeView ref="fruits"
+//       onChildAppend={handleChildAppended}
+//       onChildRemove={handleChildRemoved}>
+//         Fruit
+//       </TreeView>
+//     );
+//     var hero = this.state.wholeTree ? <div className="span9 hero-unit">b</div> : '';
+//     return (
+//       <div className="container-fluid">
+//         <div className="span3">
+//           {fruits}
+//         </div>
+//         {hero}
+//       </div>
+//     );
+//   },
+//   wholeTree: function() {
+//     console.log('asd');
+//     this.setState({'wholeTree': !this.state.wholeTree});
+//   }
+// });
+
+// React.renderComponent(<App/>, document.body);
+
+// events will 'bubble'. A parent node receives all the events from its children
+
+
+
+
+</script>
+
+</body>
+</html>
+

@@ -2,16 +2,20 @@
   display: none;
 }
 
-.treeNode {
-  user-select: none;
+.treenode {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+  user-select: none;
   cursor: pointer;
 }
 
+.hoverable:hover {
+  background-color: rgb(215, 248, 240);
+}
+
 .treenode-arrow {
-  padding-right: 6px;
+  margin-right: 6px;
   display: inline-block;
   width: 9px;
 }
