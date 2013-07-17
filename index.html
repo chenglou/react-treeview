@@ -52,7 +52,13 @@ var TreeView = React.createClass({
     // );
 
     return (
-      <TreeNode displayNode={child.displayNode}>
+      // `initiallyCollapsed` works only at the beginning, If `canToggle` is set
+      // to true, the tree node will naturally manage its expanded/collapsed
+      // state itself afterward
+      <TreeNode
+      displayNode={child.displayNode}
+      initiallyCollapsed={child.initiallyCollapsed}
+      canToggle={child.canToggle == null ? true : child.canToggle}>
         {
           (child.children && child.children.length)
             ? child.children.map(function(subChild) {
@@ -63,80 +69,6 @@ var TreeView = React.createClass({
       </TreeNode>
     );
   },
-  appendAt: function(index, node) {
-    node.props.key = this._generateUid();
-    node.props.parent = this;
-    this.state.childNodes.splice(index, 0, node);
-    this.forceUpdate();
-
-    // trigger event to self
-    node.props.onAppend && node.props.onAppend();
-    // trigger necessary events to parent
-    this.props.onChildAppend && this.props.onChildAppend(node);
-    var parent = this.parent();
-    // bubble up the event to parent
-    parent
-      && parent.props.onChildAppend
-      && parent.props.onChildAppend(node);
-    return node;
-  },
-  append: function(node) {
-    this.appendAt(this.state.childNodes.length, node);
-    return node;
-  },
-  childAt: function(index) {
-    var nodeToReturn;
-    if (typeof index === 'number') {
-      nodeToReturn = this.state.childNodes[index];
-    } else if (typeof index === 'string') {
-      var nodeAndIndex = this._findNodeAndIndexUsingUid(index, this);
-      nodeToReturn = nodeAndIndex[0];
-    }
-    return nodeToReturn;
-  },
-  removeAt: function(index) {
-    var nodeToRemove;
-    if (typeof index === 'number') {
-      nodeToRemove = this.state.childNodes.splice(index, 1)[0];
-      this.forceUpdate();
-    } else if (typeof index === 'string') {
-      var nodeAndIndex = this._findNodeAndIndexUsingUid(index, this);
-      if (nodeAndIndex) {
-        nodeToRemove = nodeAndIndex[0];
-        var nodeIndex = nodeAndIndex[1];
-        // will come back t the number case
-        nodeToRemove.parent().removeAt(nodeIndex);
-      }
-    }
-
-    // trigger event to self
-    nodeToRemove.props.onRemove && nodeToRemove.props.onRemove();
-    // trigger necessary events to parent
-    this.props.onChildRemove && this.props.onChildRemove(nodeToRemove);
-    var parent = this.parent();
-    // bubble up the event to parent
-    parent
-      && parent.props.onChildRemove
-      && parent.props.onChildRemove(nodeToRemove);
-    return nodeToRemove;
-  },
-  // start searching from root
-  _findNodeAndIndexUsingUid: function(uid, root) {
-    // kind of bad to access children's state directly, but we're assuming
-    // they're all `TreeView`s
-    var childNodes = root.state.childNodes;
-    for (var i = 0; i < childNodes.length; i++) {
-      var currentNode = childNodes[i];
-      if (currentNode.props.key === uid) {
-        return [currentNode, i];
-      }
-      var foundNodeAndIndex = this._findNodeAndIndexUsingUid(uid, currentNode);
-      if (foundNodeAndIndex) {
-        return foundNodeAndIndex;
-      }
-    }
-    return undefined;
-  },
   getUid: function() {
     return this.props.key;
   },
@@ -145,26 +77,14 @@ var TreeView = React.createClass({
     // identified this way
     return Math.random().toString(36).slice(2, 20);
   },
-  parent: function() {
-    return this.props.parent;
-  },
-  removeSelf: function() {
-    // make parent remove this using the uid
-    if (!this.parent()) {
-      // unless parent isn't set correctly, this means this is a root node
-      throw new Error('treeview cannot remove itself.');
-    } else {
-      this.parent().removeAt(this.props.key);
-    }
-  }
 });
 
 var TreeNode = React.createClass({
   getDefaultProps: function() {
-    return {collapsed: false};
+    return {canToggle: true};
   },
   getInitialState: function() {
-    return {collapsed: this.props.collapsed};
+    return {collapsed: this.props.initiallyCollapsed};
   },
   render: function() {
     var arrow = (
@@ -185,7 +105,9 @@ var TreeNode = React.createClass({
     );
   },
   toggle: function() {
-    this.setState({collapsed: !this.state.collapsed});
+    if (this.props.canToggle) {
+      this.setState({collapsed: !this.state.collapsed});
+    }
   }
 });
 
@@ -200,6 +122,7 @@ var data = [
   },
   {
     displayNode: <b>Vegetables</b>,
+    initiallyCollapsed: true,
     children: [
       {displayNode: <a href="google.com/search?q=potato">Potato</a>},
       {displayNode: <span className="favorite hoverable">Carrot</span>},
