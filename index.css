@@ -2,14 +2,6 @@
   display: none;
 }
 
-.treenode {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .treenode-arrow {
   margin-right: 6px;
   display: inline-block;

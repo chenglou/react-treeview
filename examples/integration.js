@@ -13,7 +13,11 @@
 var FruitNode = React.createClass({
   render: function() {
     return this.transferPropsTo(
-      <span onClick={this.handleClick}>
+      // define some hoverable:hover{} css for highlighting. Css not shown.
+      // I also like to turn the cursor into the hand, and disable the
+      // text selection for a more native feeling. You can do this on the built-
+      // in .treenode class too
+      <span onClick={this.handleClick} className="hoverable">
         {this.props.children}
       </span>
     );
@@ -26,7 +30,7 @@ var FruitNode = React.createClass({
 var VeggyNode = React.createClass({
   render: function() {
     return this.transferPropsTo(
-      <span onClick={this.handleClick}>
+      <span onClick={this.handleClick} className="hoverable">
         {this.props.children}
       </span>
     );
