@@ -2,10 +2,11 @@
 * @jsx React.DOM
 */
 
-// either run this file through the jsx transformation tool or include them
-// directly in an html file. More info:
-// http://facebook.github.io/react/docs/getting-started.html
-
+/*
+  either run this file through the jsx transformation tool or include them
+  directly in an html file. More info:
+  http://facebook.github.io/react/docs/getting-started.html
+*/
 
 // since react-treeview accepts any valid component as child, we can create a
 // new component for the sake of attaching data onto the nodes
@@ -47,7 +48,9 @@ var celeryData = {price: 3, size: 'small'};
 var data = [
   {
     displayNode: <b>Fruits</b>,
-    canToggle: false, // make it always expanded
+    // make it always expanded. Good if you don't want any toggle state to mess
+    // up your manually configured UI when tree view's outer component `render`s
+    canToggle: false,
     children: [
       {displayNode: <FruitNode source={orangeData}>Orange</FruitNode>},
       {displayNode: <FruitNode source={tomatoData}><i>Tomato?</i></FruitNode>},
@@ -60,23 +63,21 @@ var data = [
     children: [
       {
         displayNode:
-          (<VeggyNode source={potatoData}>
+          <VeggyNode source={potatoData}>
             <a href="google.com/search?q=potato">Potato</a>
-          </VeggyNode>)
+          </VeggyNode>
       },
       {
         displayNode:
-          (<VeggyNode source={carrotData}>
+          <VeggyNode source={carrotData}>
             <span className="favorite">Carrot</span>
-          </VeggyNode>)
+          </VeggyNode>
       },
       {displayNode: <VeggyNode source={celeryData}>Celery</VeggyNode>}
     ]
   }
 ];
 
-var food = (
-  <TreeView data={data}/>
-);
+var food = <TreeView source={data}/>;
 
 React.renderComponent(food, document.body);
