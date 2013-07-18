@@ -14,6 +14,12 @@ Or simply drop the script somewhere on your page (after React of course):
 <script src="path/to/react-treeview.js"></script>
 ```
 
+And the CSS file:
+
+```html
+<link rel="stylesheet" type="text/css" href="path/to/index.css">
+```
+
 ## API
 
 (This README uses the [JSX](http://facebook.github.io/react/docs/jsx-in-depth.html) syntax. If you prefer the JavaScript version, try the [JSX Compiler](http://facebook.github.io/react/jsx-compiler.html) any time.)
