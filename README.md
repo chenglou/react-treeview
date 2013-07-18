@@ -18,7 +18,7 @@ Or simply drop the script somewhere on your page (after React of course):
 
 (This README uses the [JSX](http://facebook.github.io/react/docs/jsx-in-depth.html) syntax. If you prefer the JavaScript version, try the [JSX Compiler](http://facebook.github.io/react/jsx-compiler.html) any time.)
 
-### &lt;TreeView />
+#### &lt;TreeView />
 The tag for declaring the tree view. A self-closing tag.
 
 #### source
