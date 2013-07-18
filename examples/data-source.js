@@ -10,23 +10,23 @@
 
 // server just sent back some data!
 var rawData = {
-  'Employees': {
-    'Paul Gordon': {
+  "Employees": {
+    "Paul Gordon": {
       age: 25,
-      sex: 'male',
-      role: 'coder'
+      sex: "male",
+      role: "coder"
     },
-    'Sarah Lee': {
+    "Sarah Lee": {
       age: 23,
-      sex: 'female',
-      role: 'jqueryer'
+      sex: "female",
+      role: "jqueryer"
     },
   },
-  'CEO': {
-    'Drew Anderson': {
+  "CEO": {
+    "Drew Anderson": {
       age: 35,
-      sex: 'male',
-      role: 'boss'
+      sex: "male",
+      role: "boss"
     }
   }
 };
