@@ -1,3 +1,4 @@
+/* this class' attached to a collapsed node. Please don't touch it */
 .treenode-collapsed {
   display: none;
 }
