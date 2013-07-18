@@ -1,7 +1,7 @@
 {
   "name": "react-treeview",
   "version": "0.0.0",
-  "main": "index.js",
+  "main": "react-treeview.js",
   "ignore": [
     "**/.*",
     "node_modules",
