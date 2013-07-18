@@ -28,7 +28,7 @@ And the CSS file:
 The tag for declaring the tree view. A self-closing tag.
 
 #### source
-The only attribute. It takes an array with the following format (head to the example for a use case):
+The only attribute. It takes an array with the following format (see the example below for a use case):
 
 ```js
 [
