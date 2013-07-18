@@ -13,401 +13,59 @@
 
 <script src="bower_components/react/react.js"></script>
 <script src="bower_components/react/JSXTransformer.js"></script>
+<script src="react-treeview.min.js" type="text/javascript"></script>
 
 <script type="text/jsx">
+
 /**
 * @jsx React.DOM
 */
 
-var TreeView = React.createClass({
-  getInitialState: function() {
-    var self = this;
-    // var source = this.props.source.map(function(item) {
-    //   return self._formatSourceProp(item);
-    // });
-    return {source: this.props.source};
-  },
-  // componentDidMount: function() {
-  //   var self = this;
-  //   this.state.source.forEach(function(item) {
-  //     self._assignIdTo(item);
-  //   });
-  // },
-  componentWillReceiveProps: function(nextProps) {
-  //   var self = this;
-  //   console.log('ok');
-  //   this.state.source.forEach(function(item) {
-  //     self._assignIdTo(item);
-  //   });
-    var self = this;
-    // var source = nextProps.source.map(function(item) {
-    //   return self._formatSourceProp(item);
-    // });
-
-    this.setState({'source': nextProps.source});
-    // console.log(source);
-    // this.setState({'source': source});
-  },
-  // _assignIdTo: function(child) {
-  //   var self = this;
-  //   // no key means new child. Give it a uid
-  //   if(child.displayNode && !child.displayNode.props.key) {
-  //     // child.displayNode.props.key = Math.random();
-  //   }
-  //   child.children && child.children.forEach(function(subChild) {
-  //     self._assignIdTo(subChild);
-  //   });
-  // },
-  render: function() {
-    var self = this;
-    // parse the data. format:
-    // [
-    //   {displayNode: bla, children: [bla, bla]},
-    //   {displayNode: bla, children: [bla, bla]},
-    // ]
-
-    var wholeTree = this.state.source.map(function(item) {
-      return self._formatSourceProp(item);
-    });
-    return (
-      <div className={this.props.className}>{wholeTree}</div>
-    );
-  },
-  _formatSourceProp: function(child) {
-    // recursively construct the markup by digging into child nodes
-    var self = this;
-    // if (!child.displayNode.props.key) {
-    //   child.displayNode.props.key = Math.random();
-    // }
-    if (!child.displayNode.props.key) {
-      child.displayNode.props.key = Math.random();
-    }
-    return (
-      // `initiallyCollapsed` works only at the beginning, If `canToggle` is set
-      // to true, the tree node will naturally manage its expanded/collapsed
-      // state itself afterward
-      <TreeNode key={child.displayNode.props.key}
-      displayNode={child.displayNode}
-      initiallyCollapsed={child.initiallyCollapsed}
-      canToggle={child.canToggle == null ? true : child.canToggle}>
-        {
-          (child.children && child.children.length)
-            ? child.children.map(function(subChild) {
-                return self._formatSourceProp(subChild);
-              })
-            : null
-        }
-      </TreeNode>
-    );
-  },
-  getUid: function() {
-    return this.props.key;
-  },
-  _generateUid: function() {
-    // piggy riding React's native key prop on components. The nodes are
-    // identified this way
-    return Math.random().toString(36).slice(2, 20);
-  },
-});
-
-var TreeNode = React.createClass({
-  getDefaultProps: function() {
-    return {canToggle: true};
-  },
-  getInitialState: function() {
-    return {collapsed: this.props.initiallyCollapsed};
-  },
-  render: function() {
-    var arrow = (
-      <div className="treenode-arrow">
-        {this.props.children && this.props.children.length
-          ? this.state.collapsed ? '▸' : '▾'
-          : null}
-      </div>
-    );
-    return (
-      <ul className="treenode">
-        {arrow}
-        <span onClick={this.toggle}>{this.props.displayNode}</span>
-        <div className={this.state.collapsed ? "treenode-collapsed" : ""}>
-          {this.props.children}
-        </div>
-      </ul>
-    );
-  },
-  toggle: function() {
-    if (this.props.canToggle) {
-      this.setState({collapsed: !this.state.collapsed});
-    }
-  }
-});
-
-
-
-
-var FruitNode = React.createClass({
-  render: function() {
-    return this.transferPropsTo(
-      <span onClick={this.handleClick}>
-        {this.props.children}
-      </span>
-    );
-  },
-  handleClick: function() {
-    console.log('This fruit\'s color is ' + this.state.source.color);
-  }
-});
-
-var VeggyNode = React.createClass({
-  render: function() {
-    return this.transferPropsTo(
-      <span onClick={this.handleClick}>
-        {this.props.children}
-      </span>
-    );
-  },
-  handleClick: function() {
-    console.log('This vegetable is ' + this.state.source.size);
-  }
-});
-
-
-var orangeData = {flavor: 'hum-um', color: 'orange'};
-var tomatoData = {flavor: 'ok', color: 'red'};
-var appleData = {flavor: 'hum-um', color: 'silver'};
-
-var potatoData = {price: 1, size: 'big'};
-var carrotData = {price: 2, size: 'small'};
-var celeryData = {price: 3, size: 'small'};
-
-// var data = [
-//   {
-//     displayNode: <b>Fruits</b>,
-//     canToggle: false, // make it always expanded
-//     children: [
-//       {displayNode: <FruitNode source={orangeData}>Orange</FruitNode>},
-//       {displayNode: <FruitNode source={tomatoData}><i>Tomato?</i></FruitNode>},
-//       {displayNode: <FruitNode source={appleData}>Apple</FruitNode>}
-//     ]
-//   },
-//   {
-//     displayNode: <b>Vegetables</b>,
-//     initiallyCollapsed: true,
-//     children: [
-//       {
-//         displayNode:
-//           (<VeggyNode source={potatoData}>
-//             <a href="google.com/search?q=potato">Potato</a>
-//           </VeggyNode>)
-//       },
-//       {
-//         displayNode:
-//           (<VeggyNode source={carrotData}>
-//             <span className="favorite">Carrot</span>
-//           </VeggyNode>)
-//       },
-//       {displayNode: <VeggyNode source={celeryData}>Celery</VeggyNode>}
-//     ]
-//   }
-// ];
-
 var data = [
   {
-    displayNode: <b>Fruits</b>,
-    canToggle: false, // make it always expanded
+    displayNode: <span>Apple</span>,
     children: [
-      {displayNode: <span>Orange</span>},
-      {displayNode: <i>Tomato?</i>},
-      {displayNode: <span>Apple</span>}
+      {displayNode: <i>FileMaker</i>},
+      {displayNode: <i>Anobit</i>},
+      {displayNode: <i>Braeburn Capital</i>}
     ]
   },
   {
-    displayNode: <b>Vegetables</b>,
-    // initiallyCollapsed: true,
+    displayNode: <span>Facebook</span>,
+    canToggle: false,
     children: [
-      {displayNode: <a href="google.com/search?q=potato">Potato</a>},
-      {displayNode: <span className="favorite">Carrot</span>},
-      {displayNode: <span>Celery</span>}
+      {displayNode: <i>Instagram</i>},
     ]
   }
 ];
 
-var food = <TreeView source={data}/>;
-
-React.renderComponent(food, document.body);
-
-
-setInterval(function() {
-  data[0].canToggle = true;
-  data[0].children.shift();
-  data[0].children.unshift({displayNode: <span>{Math.random()}</span>});
-  React.renderComponent(food, document.body);
-}, 1400);
-
-
+var companies = <TreeView source={data}/>;
+React.renderComponent(companies, document.body);
 
 setTimeout(function() {
-  data.splice(0,1);
-  React.renderComponent(food, document.body);
-}, 2000);
+  // let's remove Anobit three seconds after the initial display
+  data[0].children.splice(1, 1);
+  // the magic of React will render only what's changed
+  React.renderComponent(companies, document.body);
+}, 500);
 
-
-
-
-
-
-
-
-
-
-
-
-// var ClickItem = React.createClass({
-//   getInitialState: function() {
-//     return {menuVisible: false};
-//   },
-//   componentDidMount: function(el) {
-//     var self = this;
-//     el.addEventListener('click', function() {
-//       self.setState({'menuVisible': false});
-//     });
-//     el.addEventListener('contextmenu', function(e) {
-//       self.setState({
-//         'menuVisible': true,
-//         'left': e.pageX - el.offsetLeft,
-//         'top': e.pageY - el.offsetTop
-//       });
-//       e.preventDefault();
-//       return false;
-//     });
-//   },
+// var AA = React.createClass({
 //   render: function() {
-//     var menu = this.state.menuVisible
-//       ? (<SuperMenu
-//         top={this.state.top}
-//         left={this.state.left + 50}
-//         onClick={this.props.thingClicked}>
-//         </SuperMenu>)
-//       : '';
-//     return (
-//       <span>
-//         yo click me
-//         {menu}
-//       </span>
-//     );
-//   },
-
-// });
-
-
-// var SuperMenu = React.createClass({
-//   render: function() {
-//     var style = {
-//       position: 'absolute',
-//       top: this.props.top + 50 + 'px',
-//       left: this.props.left + 75 + 'px',
-//       backgroundColor: 'white',
-//       zIndex: '999'
-//     };
-//     return (
-//       <div style={style}>
-//         <div>test1</div>
-//         <div>test2</div>
-//         <div onMouseDown={this.props.onClick}>test3</div>
-//       </div>
-//     );
+//     var arr = [<div key={1}>a</div>, <div key={2}>b</div>];
+//     return <div>{arr}</div>;
 //   }
 // });
 
+// React.renderComponent(<AA/>, document.body);
 
+// var a={b:1, c:2}
 
-// var food = <TreeView>Food</TreeView>;
-// React.renderComponent(food, document.body);
-
-// var pastry = food.append(<TreeView><span>Pastry</span></TreeView>);
-// var dessert = food.append(<TreeView>Dessert</TreeView>);
-
-// food.appendAt(0, <TreeView><i>Entrée</i></TreeView>);
-
-// ['Ice Cream', 'Pudding', 'Chicken'].forEach(function(item) {
-//   dessert.append(<TreeView><i>{item}</i></TreeView>);
-// });
-// dessert.toggle();
-// dessert.toggle();
-
-// dessert.parent().childAt(0);
-
-
-// food.childAt(0).append(
-//   <TreeView>
-//     <a href="google.com/search?q=cake">Cake</a>
-//   </TreeView>
-// );
-
-
-// dessert.childAt(0).removeSelf();
-
-// var puddingUid = dessert.childAt(0).getUid();
-// food.childAt(puddingUid);
-// food.removeAt(puddingUid);
-
-// food.removeSelf();
-
-
-
-
-
-
-
-// var App = React.createClass({
-//   getInitialState: function() {
-//     return {wholeTree: true};
-//   },
-//   componentDidMount: function() {
-//     var apple = <TreeView onChildRemove={handleChildRemoved}>apple</TreeView>;
-//     this.refs.fruits.append(apple);
-//     // // trigger on fruits
-//     apple.append(
-//       <TreeView
-//       onRemove={handleRemove}
-//       onAppend={handleAppend}>
-//         <ClickItem
-//         thingClicked={this.wholeTree}>
-//           red
-//         </ClickItem>
-//       </TreeView>
-//     );
-//   },
+// var AA = React.createClass({displayName: 'AA',
 //   render: function() {
-//     var fruits = (
-//       <TreeView ref="fruits"
-//       onChildAppend={handleChildAppended}
-//       onChildRemove={handleChildRemoved}>
-//         Fruit
-//       </TreeView>
-//     );
-//     var hero = this.state.wholeTree ? <div className="span9 hero-unit">b</div> : '';
-//     return (
-//       <div className="container-fluid">
-//         <div className="span3">
-//           {fruits}
-//         </div>
-//         {hero}
-//       </div>
-//     );
-//   },
-//   wholeTree: function() {
-//     console.log('asd');
-//     this.setState({'wholeTree': !this.state.wholeTree});
+//     var arr = [React.DOM.div( {key:a.b}, "a"), React.DOM.div( {key:a.c}, "b")];
+//     return React.DOM.div(null, arr);
 //   }
 // });
-
-// React.renderComponent(<App/>, document.body);
-
-// events will 'bubble'. A parent node receives all the events from its children
-
-
-
 
 </script>
 
