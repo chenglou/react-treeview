@@ -84,7 +84,7 @@ React.renderComponent(companies, document.body);
 setTimeout(function() {
   // let's remove Anobit three seconds after the initial display
   data[0].children.splice(1, 1);
-  // the magic of React will render only what's changed
+  // the magic of React will only re-render what's changed
   React.renderComponent(companies, document.body);
 }, 3000);
 ```
