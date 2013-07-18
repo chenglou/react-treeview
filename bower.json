@@ -1,6 +1,8 @@
 {
   "name": "react-treeview",
   "version": "0.0.0",
+  "author": "chenglou <chenglou92@gmail.com>",
+  "description": "Easy, light, flexible tree view made with React.",
   "main": "react-treeview.js",
   "ignore": [
     "**/.*",
@@ -10,8 +12,16 @@
     "test",
     "tests"
   ],
+  "keywords": [
+    "facebook",
+    "react",
+    "treeview",
+    "tree",
+    "view"
+  ],
   "dependencies": {
     "react": "~0.4.0"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "license": "MIT"
 }
