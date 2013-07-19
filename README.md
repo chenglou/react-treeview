@@ -89,12 +89,14 @@ setTimeout(function() {
 }, 3000);
 ```
 
-Now wasn't that easy? Here's how you can style the tree:
+Now wasn't that easy? Here's how you can style the tree (also check out [index.css](https://github.com/chenglou/react-treeview/blob/master/index.css), it's so short it didn't warrant a minified version):
 
 ```
-div.treenode-arrow -> ▾ Apple                    whole node is
-                           FileMaker             a ul.treenode
-                           Braeburn Capital
+whole tree is a ul.treeview
+
+div.treenode-arrow ->   ▾ Apple              <- div.treenode-item    
+                            FileMaker                        whole node is
+                            Braeburn Capital                 a li.treenode
 ```
 
 That's it. Since you can attach any component as child, the styling is flexible and entirely up to you.
