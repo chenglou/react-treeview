@@ -7,13 +7,12 @@
 }
 
 .treenode-arrow {
-  margin-right: 6px;
+  padding-right: 6px;
   display: inline-block;
   width: 9px;
   float: left;
 }
 
-.treenode-item :nth-child(1) {
+.treenode-item {
   margin-left: 15px;
-  background-color: pink;
 }

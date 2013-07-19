@@ -13,10 +13,11 @@
 var FruitNode = React.createClass({
   render: function() {
     return this.transferPropsTo(
-      // define some hoverable:hover{} css for highlighting. Css not shown.
-      // I also like to turn the cursor into the hand, and disable the
-      // text selection for a more native feeling. You can do this on the built-
-      // in .treenode class too
+      // you can add a `className` here for css targeting, e.g. highlighting.
+      // Adding it on .treenode-item and/or treenode-arrow will highlight the
+      // whole row, while adding it here on the span highlights only the node.
+      // I also like to turn the cursor into the hand, and disable the text
+      // selection for a more native feeling.
       <span onClick={this.handleClick} className="hoverable">
         {this.props.children}
       </span>
