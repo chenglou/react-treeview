@@ -36,7 +36,6 @@
 <div id="tree"></div>
 
 <script src="react.min.js"></script>
-<script src="JSXTransformer.js"></script>
 
 <script src="react-treeview.min.js"></script>
 
@@ -71,22 +70,22 @@ var formattedData = [];
 
 for (var rankName in rawData) {
   var rankNode = {
-    displayNode: <div className="treenode-text">{rankName}</div>,
+    displayNode: React.DOM.div( {className:"treenode-text"}, rankName),
     children: []
   };
   for (var personName in rawData[rankName]) {
     var personNode = {
-      displayNode: <div className="treenode-text">{personName}</div>,
+      displayNode: React.DOM.div( {className:"treenode-text"}, personName),
       children: []
     };
     for (var personInfo in rawData[rankName][personName]) {
       var personInfoNode = {
         displayNode:
-          <div className="treenode-text">
-            <i>
-              {personInfo + ': ' + rawData[rankName][personName][personInfo]}
-            </i>
-          </div>
+          React.DOM.div( {className:"treenode-text"},
+            React.DOM.i(null,
+              personInfo + ': ' + rawData[rankName][personName][personInfo]
+            )
+          )
       };
       personNode.children.push(personInfoNode);
     }
@@ -95,7 +94,7 @@ for (var rankName in rawData) {
   formattedData.push(rankNode);
 }
 
-var companies = <TreeView source={formattedData}/>;
+var companies = TreeView( {source:formattedData});
 React.renderComponent(companies, document.getElementById('tree'));
 
 </script>
