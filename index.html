@@ -4,21 +4,63 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <link rel="stylesheet" type="text/css" href="index.css">
-  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/docs/assets/css/bootstrap.css">
+  <style>
+/*    .treenode-item, .treenode-arrow {
+      -moz-user-select: none;
+      -o-user-select: none;
+      -ms-user-select: none;
+      -webkit-user-select: none;
+      user-select: none;
+      cursor: pointer;
+    }
+    .company-text:hover {
+      background-color: rgb(220, 245, 243);
+    }
+    .company-text {
+      padding: 0px 10px 0px 5px;
+      transition: all 0.5s;
+      border-radius: 3px;
+    }
+    #tree {
+      width: 240px;
+    }*/
+  </style>
 </head>
 <body>
 
-<div class="tree1">test1</div>
-<div class="tree2">test2</div>
+<div id="tree">asd</div>
 
-<script src="bower_components/react/react.js"></script>
+<script src="bower_components/react/react.min.js"></script>
 <script src="bower_components/react/JSXTransformer.js"></script>
-<!-- <script src="react-treeview.jsx" type="text/jsx"></script> -->
 
 <script src="react-treeview.min.js"></script>
 
-<script src="examples/data-source.js" type="text/jsx"></script>
+<script type="text/jsx">
+/**
+* @jsx React.DOM
+*/
+var data = [
+  {
+    displayNode: <div className="company-text">Apple</div>,
+    children: [
+      {displayNode: <div className="company-text"><i>FileMaker</i></div>},
+      {displayNode: <div className="company-text"><i>Anobit</i></div>},
+      {displayNode: <div className="company-text"><i>Braeburn Capital</i></div>}
+    ]
+  },
+  {
+    displayNode: <div className="company-text">Facebook</div>,
+    canToggle: false,
+    children: [
+      {displayNode: <div className="company-text"><i>Instagram</i></div>},
+    ]
+  }
+];
 
+var companies = <TreeView source={data} className="company-tree"/>;
+React.renderComponent(companies, document.getElementById('tree'));
+
+</script>
 </body>
 </html>
 
