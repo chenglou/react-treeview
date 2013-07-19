@@ -60,6 +60,9 @@ Where, inside each object of the array:
 ## Example
 
 ```html
+/**
+* @jsx React.DOM
+*/
 var data = [
   {
     displayNode: <span>Apple</span>,
