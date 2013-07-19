@@ -13,7 +13,12 @@ var TreeView = React.createClass({
     var wholeTree = this.props.source.map(function(item) {
       return self._formatSource(item);
     });
-    return <div className={this.props.className}>{wholeTree}</div>;
+    var className = this.props.className;
+    return (
+      <ul className={'treeview' + (className ? ' ' + className : '')}>
+        {wholeTree}
+      </ul>
+    );
   },
   _formatSource: function(child) {
     // recursively construct the markup by digging into child nodes
@@ -59,13 +64,15 @@ var TreeNode = React.createClass({
       </div>
     );
     return (
-      <ul className="treenode">
-        {arrow}
-        <span onClick={this.toggle}>{this.props.displayNode}</span>
-        <div className={this.state.collapsed ? "treenode-collapsed" : ""}>
-          {this.props.children}
+      <li className="treenode">
+        <div onClick={this.toggle}>
+          {arrow}
+          <div className="treenode-item">{this.props.displayNode}</div>
         </div>
-      </ul>
+        <ul className={this.state.collapsed ? "treenode-collapsed" : ""}>
+          {this.props.children}
+        </ul>
+      </li>
     );
   },
   toggle: function() {

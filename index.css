@@ -1,4 +1,7 @@
-/* this class' attached to a collapsed node. Please don't touch it */
+.treeview, .treenode {
+  list-style: none;
+}
+
 .treenode-collapsed {
   display: none;
 }
@@ -7,4 +10,10 @@
   margin-right: 6px;
   display: inline-block;
   width: 9px;
+  float: left;
+}
+
+.treenode-item :nth-child(1) {
+  margin-left: 15px;
+  background-color: pink;
 }
