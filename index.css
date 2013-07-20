@@ -12,6 +12,14 @@
   width: 9px;
   float: left;
 }
+/* float was used for node arrow and item, clear it */
+.treenode:after {
+  content: ".";
+  clear: both;
+  visibility: hidden;
+  height: 0;
+  display: block;
+}
 
 .treenode-item {
   margin-left: 15px;
