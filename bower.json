@@ -1,6 +1,6 @@
 {
   "name": "react-treeview",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "chenglou <chenglou92@gmail.com>",
   "description": "Easy, light, flexible tree view made with React.",
   "main": ["react-treeview.js", "index.css"],

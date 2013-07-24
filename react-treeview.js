@@ -56,18 +56,16 @@ var TreeNode = React.createClass({displayName: 'TreeNode',
     return {collapsed: this.props.initiallyCollapsed};
   },
   render: function() {
-    var arrow = (
-      React.DOM.div( {className:"treenode-arrow"}, 
-        this.props.children && this.props.children.length
-          ? this.state.collapsed ? '▸' : '▾'
-          : null
-      )
-    );
     return (
       React.DOM.li( {className:"treenode"}, [
         React.DOM.div( {onClick:this.toggle}, [
-          arrow,
-          React.DOM.div( {className:"treenode-item"}, this.props.displayNode)
+          React.DOM.div( {className:"treenode-arrow"}, 
+            this.props.children && this.props.children.length
+              ? this.state.collapsed ? '▸' : '▾'
+              : null
+          ),
+          React.DOM.div( {className:"treenode-item"}, this.props.displayNode),
+          React.DOM.div( {className:"clearfix"}, null)
         ]),
         React.DOM.ul( {className:this.state.collapsed ? "treenode-collapsed" : ""}, 
           this.props.children
