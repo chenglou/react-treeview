@@ -58,6 +58,7 @@ Where, inside each object of the array:
 - `children` is an array of more nodes, taking the exact format as the whole outside array. A tree can be arbitrarily deep.
 
 ## Example
+[Live demo with a dash of CSS](http://chenglou.github.io/react-treeview/)
 
 ```html
 /**
