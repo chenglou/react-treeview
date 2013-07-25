@@ -10,7 +10,8 @@
     "components",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "examples"
   ],
   "keywords": [
     "facebook",
