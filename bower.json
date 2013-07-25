@@ -1,6 +1,6 @@
 {
   "name": "react-treeview",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "chenglou <chenglou92@gmail.com>",
   "description": "Easy, light, flexible tree view made with React.",
   "main": ["react-treeview.js", "index.css"],
@@ -10,7 +10,8 @@
     "components",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "examples"
   ],
   "keywords": [
     "facebook",
