@@ -20,6 +20,7 @@ var TreeView = React.createClass({displayName: 'TreeView',
       )
     );
   },
+
   _formatSource: function(child) {
     // recursively construct the markup by digging into child nodes
     var self = this;
@@ -35,7 +36,8 @@ var TreeView = React.createClass({displayName: 'TreeView',
         {key:child.displayNode.props.key,
         displayNode:child.displayNode,
         initiallyCollapsed:child.initiallyCollapsed,
-        canToggle:child.canToggle == null ? true : child.canToggle}, 
+        canToggle:child.canToggle == null ? true : child.canToggle,
+        toggleOnDoubleClick:this.props.toggleOnDoubleClick}, 
         
           (child.children && child.children.length)
             ? child.children.map(function(subChild) {
@@ -52,13 +54,18 @@ var TreeNode = React.createClass({displayName: 'TreeNode',
   getDefaultProps: function() {
     return {canToggle: true};
   },
+
   getInitialState: function() {
     return {collapsed: this.props.initiallyCollapsed};
   },
+
   render: function() {
+    var nodeClassName = 'treenode' +
+      (this.props.canToggle ? '' : ' treenode-no-toggle');
+
     return (
-      React.DOM.li( {className:"treenode"}, [
-        React.DOM.div( {onClick:this.toggle}, [
+      React.DOM.li( {className:nodeClassName}, [
+        React.DOM.div( {onClick:this.handleClick, onDoubleClick:this.handleDoubleClick}, [
           React.DOM.div( {className:"treenode-arrow"}, 
             this.props.children && this.props.children.length
               ? this.state.collapsed ? '▸' : '▾'
@@ -73,8 +80,15 @@ var TreeNode = React.createClass({displayName: 'TreeNode',
       ])
     );
   },
-  toggle: function() {
-    if (this.props.canToggle) {
+
+  handleClick: function() {
+    if (!this.props.toggleOnDoubleClick && this.props.canToggle) {
+      this.setState({collapsed: !this.state.collapsed});
+    }
+  },
+
+  handleDoubleClick: function() {
+    if (this.props.toggleOnDoubleClick && this.props.canToggle) {
       this.setState({collapsed: !this.state.collapsed});
     }
   }

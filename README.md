@@ -17,7 +17,7 @@ Or simply drop the script somewhere on your page (after React of course):
 And the CSS file:
 
 ```html
-<link rel="stylesheet" type="text/css" href="path/to/index.css">
+<link rel="stylesheet" type="text/css" href="path/to/react-treeview.css">
 ```
 
 ## API
@@ -28,7 +28,7 @@ And the CSS file:
 The tag for declaring the tree view. A self-closing tag.
 
 #### source
-The only attribute. It takes an array with the following format (see the example below for a use case):
+Takes an array with the following format (see the example below for a use case):
 
 ```js
 [
@@ -56,6 +56,9 @@ Where, inside each object of the array:
 - `canToggle` defaults to true. This lets the user expand/collapse the node. This is the only state in the tree; disabling it effectively renders this whole component stateless, which might be desirable if you want full control from a parent component.
 
 - `children` is an array of more nodes, taking the exact format as the whole outside array. A tree can be arbitrarily deep.
+
+### toggleOnDoubleClick
+Boolean. Whether toggling upon double or single click.
 
 ## Example
 [Live demo with a dash of CSS](http://chenglou.github.io/react-treeview/)
@@ -99,8 +102,9 @@ Now wasn't that easy? Here's how you can style the tree (also check out [index.c
 whole tree is a ul.treeview
 
 div.treenode-arrow ->   ▾ Apple              <- div.treenode-item    
-                            FileMaker                        whole node is
-                            Braeburn Capital                 a li.treenode
+                            FileMaker              whole node is a li.treenode
+                            Braeburn Capital       also is .treenode-no-toggle
+                                                   with `canToggle` false
 ```
 
 That's it. Since you can attach any component as child, the styling is flexible and entirely up to you.

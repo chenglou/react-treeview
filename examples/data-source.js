@@ -63,5 +63,9 @@ for (var rankName in rawData) {
   formattedData.push(rankNode);
 }
 
-var companyPeople = <TreeView source={formattedData}/>;
+var companyPeople =
+  <TreeView
+    source={formattedData}
+    toggleOnDoubleClick={true}/>;
+
 React.renderComponent(companyPeople, document.body);
