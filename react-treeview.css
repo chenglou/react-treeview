@@ -11,6 +11,8 @@
   display: inline-block;
   width: 9px;
   float: left;
+  font-size: 16px;
+  line-height: 18px;
 }
 
 .treenode-item {
