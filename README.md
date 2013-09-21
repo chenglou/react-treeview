@@ -1,6 +1,6 @@
 # React-treeview
 
-Easy, light, flexible tree view made with [React](http://facebook.github.io/react/).
+Easy, light, flexible treeview made with [React](http://facebook.github.io/react/).
 
 ## install
 
@@ -8,7 +8,7 @@ Easy, light, flexible tree view made with [React](http://facebook.github.io/reac
 bower install react-treeview
 ```
 
-Or simply drop the script somewhere on your page (after React of course):
+Simply drop the script somewhere on your page (after React of course):
 
 ```html
 <script src="path/to/react-treeview.js"></script>
