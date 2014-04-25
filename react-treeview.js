@@ -2,10 +2,8 @@
 * @jsx React.DOM
 */
 
-var TreeView;
-
-((function() {
-  TreeView = React.createClass({
+((function(root) {
+  var TreeView = React.createClass({
     render: function() {
       var self = this;
       // parse the data. format:
@@ -96,4 +94,6 @@ var TreeView;
       }
     }
   });
-})());
+
+  root.TreeView = TreeView;
+})(this));
