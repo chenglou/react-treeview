@@ -1,0 +1,24 @@
+{
+  "name": "react-treeview-example",
+  "version": "0.3.1",
+  "author": "chenglou <chenglou92@gmail.com>",
+  "description": "Easy, light, flexible tree view made with React.",
+  "main": [
+    "index.js"
+  ],
+  "keywords": [
+    "facebook",
+    "react",
+    "treeview",
+    "tree",
+    "view",
+    "treenode",
+    "example"
+  ],
+  "dependencies": {
+    "react": "^0.10.0",
+    "react-treeview": "~0.3.1"
+  },
+  "devDependencies": {},
+  "license": "MIT"
+}

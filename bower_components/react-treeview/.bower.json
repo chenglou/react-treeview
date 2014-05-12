@@ -1,0 +1,40 @@
+{
+  "name": "react-treeview",
+  "version": "0.3.1",
+  "author": "chenglou <chenglou92@gmail.com>",
+  "description": "Easy, light, flexible tree view made with React.",
+  "main": [
+    "react-treeview.js",
+    "react-treeview.css"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "package.json",
+    "examples"
+  ],
+  "keywords": [
+    "facebook",
+    "react",
+    "treeview",
+    "tree",
+    "view",
+    "treenode"
+  ],
+  "dependencies": {
+    "react": "^0.10.0"
+  },
+  "devDependencies": {},
+  "license": "MIT",
+  "homepage": "https://github.com/chenglou/react-treeview",
+  "_release": "0.3.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.3.1",
+    "commit": "f67e7fd4d344eba0a7b0ec61427040e8cf414375"
+  },
+  "_source": "git://github.com/chenglou/react-treeview.git",
+  "_target": "~0.3.1",
+  "_originalSource": "react-treeview"
+}

@@ -1,103 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
-  <link rel="stylesheet" type="text/css" href="react-treeview.css">
-  <style>
-    .treenode-item, .treenode-arrow {
-      -moz-user-select: none;
-      -o-user-select: none;
-      -ms-user-select: none;
-      -webkit-user-select: none;
-      user-select: none;
-      cursor: pointer;
-    }
-    .treenode-text:hover {
-      background-color: rgb(220, 245, 243);
-    }
-    .treenode-text {
-      padding: 2px 10px 2px 5px;
-      -moz-transition: all 0.5s;
-      -o-transition: all 0.5s;
-      -ms-transition: all 0.5s;
-      -webkit-transition: all 0.5s;
-      transition: all 0.5s;
-      border-radius: 3px;
-      font: 14px Helvetica, Arial, sans-serif;
-    }
-    #tree {
-      width: 240px;
-    }
-  </style>
+  <title>Company People</title>
+
+  <link rel="stylesheet" href="bower_components/react-treeview/react-treeview.css">
+  <link rel="stylesheet" href="opinionated.css">
 </head>
 <body>
 
-<div id="tree"></div>
+<div id="uncontrolled"></div>
 
-<script src="react.min.js"></script>
+<script src="bower_components/react/react.js"></script>
+<script src="bower_components/react/JSXTransformer.js"></script>
+<script type="text/jsx" src="bower_components/react-treeview/react-treeview.jsx"></script>
 
-<script src="react-treeview.min.js"></script>
+<script type="text/jsx" src="index.js"></script>
 
-<script>
-/**
-* @jsx React.DOM
-*/
-
-var rawData = {
-  "Employees": {
-    "Paul Gordon": {
-      age: 25,
-      sex: "male",
-      role: "coder"
-    },
-    "Sarah Lee": {
-      age: 23,
-      sex: "female",
-      role: "jqueryer"
-    },
-  },
-  "CEO": {
-    "Drew Anderson": {
-      age: 35,
-      sex: "male",
-      role: "boss"
-    }
-  }
-};
-
-var formattedData = [];
-
-for (var rankName in rawData) {
-  var rankNode = {
-    displayNode: React.DOM.div( {className:"treenode-text"}, rankName),
-    children: []
-  };
-  for (var personName in rawData[rankName]) {
-    var personNode = {
-      displayNode: React.DOM.div( {className:"treenode-text"}, personName),
-      children: []
-    };
-    for (var personInfo in rawData[rankName][personName]) {
-      var personInfoNode = {
-        displayNode:
-          React.DOM.div( {className:"treenode-text"},
-            React.DOM.i(null,
-              personInfo + ': ' + rawData[rankName][personName][personInfo]
-            )
-          )
-      };
-      personNode.children.push(personInfoNode);
-    }
-    rankNode.children.push(personNode);
-  }
-  formattedData.push(rankNode);
-}
-
-var companies = TreeView( {source:formattedData});
-React.renderComponent(companies, document.getElementById('tree'));
-
-</script>
 </body>
 </html>
-
