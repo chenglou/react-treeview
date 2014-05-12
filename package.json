@@ -1,0 +1,35 @@
+{
+  "name": "react-treeview",
+  "version": "0.3.0",
+  "description": "Easy, light, flexible tree view made with React.",
+  "main": "react-treeview.js",
+  "directories": {
+    "example": "example",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chenglou/react-treeview.git"
+  },
+  "keywords": [
+    "facebook",
+    "react",
+    "treeview",
+    "tree",
+    "view",
+    "treenode"
+  ],
+  "author": "chenglou <chenglou92@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chenglou/react-treeview/issues"
+  },
+  "homepage": "https://github.com/chenglou/react-treeview",
+  "dependencies": {
+    "envify": "^1.2.1",
+    "react": "^0.10.0"
+  }
+}

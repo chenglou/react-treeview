@@ -1,16 +1,14 @@
 {
   "name": "react-treeview",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "chenglou <chenglou92@gmail.com>",
   "description": "Easy, light, flexible tree view made with React.",
-  "main": ["react-treeview.js", "index.css"],
+  "main": ["react-treeview.js", "react-treeview.css"],
   "ignore": [
     "**/.*",
     "node_modules",
-    "components",
     "bower_components",
-    "test",
-    "tests",
+    "package.json",
     "examples"
   ],
   "keywords": [
@@ -18,10 +16,11 @@
     "react",
     "treeview",
     "tree",
-    "view"
+    "view",
+    "treenode"
   ],
   "dependencies": {
-    "react": "~0.4.0"
+    "react": "^0.10.0"
   },
   "devDependencies": {},
   "license": "MIT"
