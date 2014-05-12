@@ -2,8 +2,7 @@
 
 Easy, light, flexible treeview made with [React](http://facebook.github.io/react/).
 
-[Demo.](http://chenglou.github.io/react-treeview/)
-(Also check out the example/ folder for usage.)
+[Demo](http://chenglou.github.io/react-treeview/) (Also check out the `example/` folder for usage).
 
 ## install
 
