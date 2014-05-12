@@ -1,25 +1,28 @@
-.treeview, .treenode {
-  list-style: none;
+/* the tree node's style */
+.tree-view {
+  overflow-y: hidden;
 }
 
-.treenode-collapsed {
-  display: none;
+/* style for the container */
+.tree-view_children {
+  margin-left: 16px;
 }
 
-.treenode-arrow {
-  padding-right: 6px;
+.tree-view_children-collapsed {
+  height: 0px;
+}
+
+.tree-view_arrow {
+  cursor: pointer;
+  margin-right: 6px;
   display: inline-block;
-  width: 9px;
-  float: left;
-  font-size: 16px;
-  line-height: 18px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-.treenode-item {
-  margin-left: 15px;
-}
-
-/* float was used for node arrow and item, clear it */
-.clearfix {
-  clear: both;
+/* rotate the triangle to close it */
+.tree-view_arrow-collapsed {
+  -webkit-transform: rotate(-90deg);
 }
