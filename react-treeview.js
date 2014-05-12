@@ -18,7 +18,7 @@
       this.setState({
         collapsed: !this.state.collapsed
       });
-      this.props.handleClick && this.props.handleClick(a, b, c);
+      this.props.onClick && this.props.onClick(a, b, c);
     },
 
     render: function() {
