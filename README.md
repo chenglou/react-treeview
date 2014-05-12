@@ -28,7 +28,7 @@ The CSS file:
 The component accepts [three props](https://github.com/chenglou/react-treeview/blob/master/react-treeview.jsx#L8-L10).
 
 - `collapsed`: whether the node is collapsed or not.
-- `defaultCollapsed`: the [uncontrolled](http://facebook.github.io/react/docs/forms.html#controlled-components) equivalent to `collapsed`.
+- `defaultCollapsed`: the [uncontrolled](http://facebook.github.io/react/docs/forms.html#uncontrolled-components) equivalent to `collapsed`.
 - `nodeLabel`: the component or string (or any renderable "thing") that's displayed beside the TreeView arrow.
 
 TreeViews can be naturally nested.
@@ -36,7 +36,7 @@ TreeViews can be naturally nested.
 **Note**: `this.transferPropsTo(<TreeView />)` will transfer the props to the arrow under the hood. All attributes and events naturally work on it.
 
 ## Styling
-The CSS is flexible, commented and made to be easily customized. Feel free to inspect the demo's classes and check the [short source code](https://github.com/chenglou/react-treeview/blob/gh-pages/react-treeview.css).
+The CSS is flexible, commented and made to be easily customized. Feel free to inspect the demo's classes and check the [short CSS code](https://github.com/chenglou/react-treeview/blob/master/react-treeview.css).
 
 ## License
 
