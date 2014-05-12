@@ -2,19 +2,22 @@
 
 Easy, light, flexible treeview made with [React](http://facebook.github.io/react/).
 
+[Demo.](http://chenglou.github.io/react-treeview/)
+(Also check out the example/ folder for usage.)
+
 ## install
 
+Npm:
+```sh
+npm install react-treeview
+```
+
+Bower:
 ```sh
 bower install react-treeview
 ```
 
-Simply drop the script somewhere on your page (after React of course):
-
-```html
-<script src="path/to/react-treeview.js"></script>
-```
-
-And the CSS file:
+The CSS file:
 
 ```html
 <link rel="stylesheet" type="text/css" href="path/to/react-treeview.css">
@@ -22,94 +25,19 @@ And the CSS file:
 
 ## API
 
-(This README uses the [JSX](http://facebook.github.io/react/docs/jsx-in-depth.html) syntax. If you prefer the JavaScript version, try the [JSX Compiler](http://facebook.github.io/react/jsx-compiler.html) any time.)
-
 #### &lt;TreeView />
-The tag for declaring the tree view. A self-closing tag.
+The component accepts [three props](https://github.com/chenglou/react-treeview/blob/master/react-treeview.jsx#L8-L10).
 
-#### source
-Takes an array with the following format (see the example below for a use case):
+- `collapsed`: whether the node is collapsed or not.
+- `defaultCollapsed`: the [uncontrolled](http://facebook.github.io/react/docs/forms.html#controlled-components) equivalent to `collapsed`.
+- `nodeLabel`: the component or string (or any renderable "thing") that's displayed beside the TreeView arrow.
 
-```js
-[
-  {
-    displayNode: markupHere,
-    initiallyCollapsed: booleanHere,
-    canToggle: booleanHere,
-    children: [moreObjectsHere]
-  },
-  {
-    displayNode: markupHere,
-    initiallyCollapsed: booleanHere,
-    canToggle: booleanHere,
-    children: [moreObjectsHere]
-  },
-  // more...
-];
-```
+TreeViews can be naturally nested.
 
-Where, inside each object of the array:
-- `displayNode` is the only required key. Its value could be any valid React node (a string won't do), therefore conferring to the tree view an extreme flexibility ([hardness its full power here](https://github.com/chenglou/react-treeview/tree/master/examples/integration.js)), such as custom styling, data attachment, nested components, etc.
+**Note**: `this.transferPropsTo(<TreeView />)` will transfer the props to the arrow under the hood. All attributes and events naturally work on it.
 
-- `initiallyCollapsed` defaults to false. Setting it to true renders the tree with that node's children collapsed.
-
-- `canToggle` defaults to true. This lets the user expand/collapse the node. This is the only state in the tree; disabling it effectively renders this whole component stateless, which might be desirable if you want full control from a parent component.
-
-- `children` is an array of more nodes, taking the exact format as the whole outside array. A tree can be arbitrarily deep.
-
-### toggleOnDoubleClick
-Boolean. Whether toggling upon double or single click.
-
-## Example
-[Live demo with a dash of CSS](http://chenglou.github.io/react-treeview/)
-
-```html
-/**
-* @jsx React.DOM
-*/
-var data = [
-  {
-    displayNode: <span>Apple</span>,
-    children: [
-      {displayNode: <i>FileMaker</i>},
-      {displayNode: <i>Anobit</i>},
-      {displayNode: <i>Braeburn Capital</i>}
-    ]
-  },
-  {
-    displayNode: <span>Facebook</span>,
-    canToggle: false,
-    children: [
-      {displayNode: <i>Instagram</i>},
-    ]
-  }
-];
-
-var companies = <TreeView source={data} className="company-tree"/>;
-React.renderComponent(companies, document.body);
-
-setTimeout(function() {
-  // let's remove Anobit three seconds after the initial display
-  data[0].children.splice(1, 1);
-  // the magic of React will only re-render what's changed
-  React.renderComponent(companies, document.body);
-}, 3000);
-```
-
-Now wasn't that easy? Here's how you can style the tree (also check out [index.css](https://github.com/chenglou/react-treeview/blob/master/index.css), it's so short it didn't warrant a minified version):
-
-```
-whole tree is a ul.treeview
-
-div.treenode-arrow ->   ▾ Apple              <- div.treenode-item    
-                            FileMaker              whole node is a li.treenode
-                            Braeburn Capital       also is .treenode-no-toggle
-                                                   with `canToggle` false
-```
-
-That's it. Since you can attach any component as child, the styling is flexible and entirely up to you.
-
-Check out the [examples](https://github.com/chenglou/react-treeview/tree/master/examples) folder for two sophisticated demos with plenty of explanations!
+## Styling
+The CSS is flexible, commented and made to be easily customized. Feel free to inspect the demo's classes and check the [short source code](https://github.com/chenglou/react-treeview/blob/gh-pages/react-treeview.css).
 
 ## License
 
