@@ -1,3 +1,6 @@
+## 0.3.2 (May 12th 2014)
+- Fix bug where `onClick` doesn't trigger.
+
 ## 0.3.1 (May 12th 2014)
 - New API. Breaking. It's a superset of the previous API, so everything should be reproducible.The new only Only exposes a `TreeView` and let natural recursion construct the tree.
 - Bump React version.
