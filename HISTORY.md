@@ -1,4 +1,4 @@
-## 0.3.0 (May 12th 2014)
+## 0.3.1 (May 12th 2014)
 - New API. Breaking. It's a superset of the previous API, so everything should be reproducible.The new only Only exposes a `TreeView` and let natural recursion construct the tree.
 - Bump React version.
 
