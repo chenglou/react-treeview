@@ -53,4 +53,4 @@
   } else {
     module.exports = TreeView;
   }
-})(window, typeof require === 'function' ? require('React') : React);
+})(window, typeof require === 'function' ? require('react') : React);

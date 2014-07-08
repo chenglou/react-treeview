@@ -1,6 +1,6 @@
 {
   "name": "react-treeview",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Easy, light, flexible tree view made with React.",
   "main": "react-treeview.js",
   "directories": {
@@ -8,7 +8,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node_modules/.bin/jsx react-treeview.jsx > react-treeview.js"
   },
   "repository": {
     "type": "git",
@@ -31,5 +32,8 @@
   "dependencies": {
     "envify": "^1.2.1",
     "react": "^0.10.0"
+  },
+  "devDependencies": {
+    "react-tools": "^0.10.0"
   }
 }
