@@ -1,6 +1,6 @@
 {
   "name": "react-treeview",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Easy, light, flexible tree view made with React.",
   "main": "react-treeview.js",
   "directories": {
@@ -31,7 +31,7 @@
   "homepage": "https://github.com/chenglou/react-treeview",
   "dependencies": {
     "envify": "^1.2.1",
-    "react": "^0.10.0"
+    "react": "^0.11.0"
   },
   "devDependencies": {
     "react-tools": "^0.10.0"
