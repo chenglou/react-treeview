@@ -1,4 +1,4 @@
-## 0.3.3 (July 8th 2014)
+## 0.3.3-0.3.5 (July 8th 2014)
 - Fix case-sensitive `require` for Linux.
 
 ## 0.3.2 (May 12th 2014)
