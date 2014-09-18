@@ -1,6 +1,13 @@
 /** * @jsx React.DOM */
-
-(function (window, React){
+(function (root, React, factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD.
+        define(['react'], factory);
+    } else {
+        // Browser globals
+        root.TreeView = factory(root,React);
+    }
+})(this, typeof require === 'function' ? require('react') : React, function (window, React){
   'use strict';
 
   var TreeView = React.createClass({
@@ -53,4 +60,6 @@
   } else {
     module.exports = TreeView;
   }
-})(window, typeof require === 'function' ? require('react') : React);
+
+  return TreeView;
+});
