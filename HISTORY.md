@@ -1,3 +1,6 @@
+## 0.3.7 (September 17th 2014)
+- Support for AMD.
+
 ## 0.3.3-0.3.5 (July 8th 2014)
 - Fix case-sensitive `require` for Linux.
 
