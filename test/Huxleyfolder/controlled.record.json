@@ -1,0 +1,33 @@
+[
+  {
+    "action": "screenshot"
+  },
+  {
+    "action": "pause",
+    "ms": 600
+  },
+  {
+    "action": "click",
+    "y": 43,
+    "x": 31
+  },
+  {
+    "action": "pause",
+    "ms": 600
+  },
+  {
+    "action": "screenshot"
+  },
+  {
+    "action": "click",
+    "y": 138,
+    "x": 16
+  },
+  {
+    "action": "pause",
+    "ms": 600
+  },
+  {
+    "action": "screenshot"
+  }
+]

@@ -1,5 +1,6 @@
-examples
+.idea
 bower.json
 bower_components
+examples
 react-treeview.sublime-*
-.idea
+test

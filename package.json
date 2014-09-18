@@ -8,7 +8,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node_modules/.bin/selenium & node_modules/.bin/hux test/",
     "build": "node_modules/.bin/jsx react-treeview.jsx > react-treeview.js"
   },
   "repository": {
@@ -35,6 +35,8 @@
     "react": "^0.11.0"
   },
   "devDependencies": {
-    "react-tools": "^0.10.0"
+    "huxley": "^0.8.1",
+    "react-tools": "^0.10.0",
+    "selenium-server": "^2.43.1"
   }
 }
