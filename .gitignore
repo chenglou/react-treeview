@@ -1,1 +1,7 @@
 .DS_Store
+node_modules
+bower_components/react/*
+!bower_components/react/react.js
+!bower_components/react/JSXTransformer.js
+bower_components/react-treeview/*
+!bower_components/react-treeview/react-treeview.*
