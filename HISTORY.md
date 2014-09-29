@@ -1,3 +1,7 @@
+## 0.3.8 (September 29th 2014)
+- Make AMD with Webpack work.
+- Bump React version to 0.11.2.
+
 ## 0.3.7 (September 17th 2014)
 - Support for AMD.
 

@@ -2,9 +2,9 @@
 (function (root, React, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD.
-	var carry = function(React){
-		return factory(root, React);
-	};
+    var carry = function(React){
+      return factory(root, React);
+    };
     define(['react'], carry);
   } else {
     // Browser globals
