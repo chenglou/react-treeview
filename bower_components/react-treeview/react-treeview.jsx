@@ -1,8 +1,10 @@
-/** * @jsx React.DOM */
 (function (root, React, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD.
-    define(['react'], factory);
+    var carry = function(React){
+      return factory(root, React);
+    };
+    define(['react'], carry);
   } else {
     // Browser globals
     root.TreeView = factory(root, React);
@@ -29,8 +31,10 @@
     },
 
     render: function() {
-      var collapsed = this.props.collapsed != null ?
-        this.props.collapsed :
+      var props = this.props;
+
+      var collapsed = props.collapsed != null ?
+        props.collapsed :
         this.state.collapsed;
 
       var arrowClassName = 'tree-view_arrow';
@@ -41,12 +45,17 @@
       }
 
       var arrow =
-        <div className={arrowClassName} onClick={this.handleClick}>▾</div>;
+        <div
+          {...props}
+          className={[arrowClassName].concat(props.className).join(' ')}
+          onClick={this.handleClick}>
+            ▾
+          </div>;
 
       return (
         <div className="tree-view">
-          {this.transferPropsTo(arrow)}
-          {this.props.nodeLabel}
+          {arrow}
+          {props.nodeLabel}
           <div className={containerClassName}>
             {this.props.children}
           </div>

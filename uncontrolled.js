@@ -1,5 +1,3 @@
-/** @jsx React.DOM */
-
 /*global TreeView, React */
 
 // This example data format is totally arbitrary. No data massaging is
@@ -53,7 +51,7 @@ var CompanyPeople = React.createClass({
   }
 });
 
-React.renderComponent(
+React.render(
   <CompanyPeople dataSource={dataSource} />,
   document.getElementById('uncontrolled')
 );
