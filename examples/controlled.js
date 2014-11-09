@@ -1,5 +1,3 @@
-/** @jsx React.DOM */
-
 /*global TreeView, React */
 
 // This example data format is totally arbitrary. No data massaging is
@@ -51,12 +49,13 @@ var Lists = React.createClass({
               Type {i}
             </span>;
           return (
-            <TreeView key={i}
+            <TreeView
+              key={i}
               nodeLabel={label}
               collapsed={collapsedBookkeeping[i]}
               onClick={this.handleClick.bind(null, i)}>
                 {node.map(function(entry) {
-                  return <div className="info">{entry}</div>;
+                  return <div className="info" key={entry}>{entry}</div>;
                 })}
             </TreeView>
           );
@@ -66,7 +65,7 @@ var Lists = React.createClass({
   }
 });
 
-React.renderComponent(
+React.render(
   <Lists dataSource={dataSource} />,
   document.getElementById('controlled')
 );

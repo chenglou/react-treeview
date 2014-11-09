@@ -31,12 +31,11 @@
   },
   "homepage": "https://github.com/chenglou/react-treeview",
   "dependencies": {
-    "envify": "^1.2.1",
-    "react": "^0.11.2"
+    "react": "^0.12.0"
   },
   "devDependencies": {
     "huxley": "^0.8.1",
-    "react-tools": "^0.10.0",
-    "selenium-server": "^2.43.1"
+    "react-tools": "^0.12.0",
+    "selenium-server": "^2.44.0"
   }
 }
