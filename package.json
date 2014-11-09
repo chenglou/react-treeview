@@ -1,6 +1,6 @@
 {
   "name": "react-treeview",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "Easy, light, flexible tree view made with React.",
   "main": "react-treeview.js",
   "directories": {

@@ -1,3 +1,6 @@
+## 0.3.9 (November 8th 2014)
+- Bump React to 0.12.
+
 ## 0.3.8 (September 29th 2014)
 - Make AMD with Webpack work.
 - Bump React version to 0.11.2.
