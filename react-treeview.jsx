@@ -47,17 +47,17 @@
       var arrow =
         <div
           {...props}
-          className={[arrowClassName].concat(props.className).join(' ')}
+          className={(props.className || '') + ' ' + arrowClassName}
           onClick={this.handleClick}>
             ▾
-          </div>;
+        </div>;
 
       return (
         <div className="tree-view">
           {arrow}
           {props.nodeLabel}
           <div className={containerClassName}>
-            {this.props.children}
+            {props.children}
           </div>
         </div>
       );

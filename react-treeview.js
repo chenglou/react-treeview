@@ -47,17 +47,17 @@
       var arrow =
         React.createElement("div", React.__spread({}, 
           props, 
-          {className: [arrowClassName].concat(props.className).join(' '), 
+          {className: (props.className || '') + ' ' + arrowClassName, 
           onClick: this.handleClick}), 
             "▾"
-          );
+        );
 
       return (
         React.createElement("div", {className: "tree-view"}, 
           arrow, 
           props.nodeLabel, 
           React.createElement("div", {className: containerClassName}, 
-            this.props.children
+            props.children
           )
         )
       );

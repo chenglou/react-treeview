@@ -1,3 +1,6 @@
+## 0.3.10 (November 9th 2014)
+- Perf improvement.
+
 ## 0.3.9 (November 8th 2014)
 - Bump React to 0.12.
 
