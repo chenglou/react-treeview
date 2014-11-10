@@ -23,17 +23,18 @@
       return {collapsed: this.props.defaultCollapsed};
     },
 
-    handleClick: function(a, b, c) {
+    handleClick: function() {
       this.setState({
         collapsed: !this.state.collapsed
       });
-      this.props.onClick && this.props.onClick(a, b, c);
+      if(this.props.onClick)
+        this.props.onClick();
     },
 
     render: function() {
       var props = this.props;
 
-      var collapsed = props.collapsed != null ?
+      var collapsed = props.collapsed !== null ?
         props.collapsed :
         this.state.collapsed;
 
