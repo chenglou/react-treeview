@@ -1,4 +1,4 @@
-# React-treeview
+# React-treeview ![npm](http://img.shields.io/npm/v/react-treeview.svg?style=flat) ![bower](http://img.shields.io/bower/v/react-treeview.svg?style=flat)
 
 Easy, light, flexible treeview made with [React](http://facebook.github.io/react/).
 
