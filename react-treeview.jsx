@@ -16,7 +16,7 @@
     propTypes: {
       collapsed: React.PropTypes.bool,
       defaultCollapsed: React.PropTypes.bool,
-      nodeLabel: React.PropTypes.renderable.isRequired
+      nodeLabel: React.PropTypes.node.isRequired
     },
 
     getInitialState: function() {
