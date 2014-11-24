@@ -38,16 +38,17 @@ TreeViews can be naturally nested.
 ## Styling
 The CSS is flexible, commented and made to be easily customized. Feel free to inspect the demo's classes and check the [short CSS code](https://github.com/chenglou/react-treeview/blob/master/react-treeview.css).
 
-## Compiling
-NPM CLI compilation command:
+## Build it yourself
+
 ```sh
 npm run build
 ```
 
-JSX CLI compilation command:
+Or, if you don't use npm:
 ```sh
-jsx -x jsx ./ ./ react-treeview
+jsx react-treeview.jsx > react-treeview.js
 ```
+(Make sure you got JSX installed somehow)
 
 ## License
 
