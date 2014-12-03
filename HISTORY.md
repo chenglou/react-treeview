@@ -1,3 +1,7 @@
+## 0.3.11 (December 2nd 2014)
+- Upgrade React to 0.12.1.
+- Fix `propTypes` warning.
+
 ## 0.3.10 (November 9th 2014)
 - Perf improvement.
 
