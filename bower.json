@@ -23,11 +23,11 @@
     "treenode"
   ],
   "dependencies": {
-    "react": "~0.12.0"
+    "react": "~0.12.1"
   },
   "devDependencies": {},
   "license": "MIT",
   "resolutions": {
-    "react": "~0.12.0"
+    "react": "~0.12.1"
   }
 }
