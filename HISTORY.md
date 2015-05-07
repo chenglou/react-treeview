@@ -1,3 +1,6 @@
+## 0.3.12 (May 7th 2015)
+- Upgrade React dependency to accept >=0.12.0.
+
 ## 0.3.11 (December 2nd 2014)
 - Upgrade React to 0.12.1.
 - Fix `propTypes` warning.
