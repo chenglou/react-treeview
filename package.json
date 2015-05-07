@@ -30,8 +30,8 @@
     "url": "https://github.com/chenglou/react-treeview/issues"
   },
   "homepage": "https://github.com/chenglou/react-treeview",
-  "dependencies": {
-    "react": "^0.12.1"
+  "peerDependencies": {
+    "react": ">=0.12.0"
   },
   "devDependencies": {
     "huxley": "^0.8.1",
