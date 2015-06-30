@@ -54,8 +54,10 @@
 
       return (
         <div className="tree-view">
-          {arrow}
-          {props.nodeLabel}
+          <div className="tree-view_item">
+            {arrow}
+            {props.nodeLabel}
+          </div>
           <div className={containerClassName}>
             {props.children}
           </div>
