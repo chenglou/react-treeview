@@ -10,7 +10,7 @@
     "start": "NODE_ENV=development node server.js",
     "lint": "eslint src demos",
     "build-demos": "NODE_ENV=production webpack -p",
-    "prerelease": "babel src --out-dir lib && NODE_ENV=production webpack --config webpack.prod.config.js"
+    "prerelease": "babel src --out-dir lib && NODE_ENV=production webpack --config webpack.prod.config.js && cp src/react-treeview.css build/react-treeview.css"
   },
   "repository": {
     "type": "git",

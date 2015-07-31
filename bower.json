@@ -12,7 +12,8 @@
     "node_modules",
     "bower_components",
     "package.json",
-    "examples"
+    "demos",
+    "src"
   ],
   "keywords": [
     "facebook",
