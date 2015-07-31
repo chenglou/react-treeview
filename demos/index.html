@@ -1,18 +1,40 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Some Trees</title>
-
   <link rel="stylesheet" href="../src/react-treeview.css">
   <link rel="stylesheet" href="opinionated.css">
+  <style>
+  body {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+  }
+
+  .container {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+    width: 80%;
+    margin: auto;
+  }
+  </style>
 </head>
+
 <body>
-
-<div id="uncontrolled" style="margin-bottom: 10px;"></div>
-<div id="controlled"></div>
-
-<script src="/static/bundle.js"></script>
-
+  <div class="container">
+    <div>
+      Uncontrolled
+      <div id="uncontrolled" style="margin-top: 10px"></div>
+    </div>
+    <div>
+      Controlled
+      <div id="controlled" style="margin-top: 10px"></div>
+    </div>
+  </div>
+  <script src="/static/bundle.js"></script>
 </body>
+
 </html>
