@@ -1,17 +1,22 @@
 var path = require('path');
 var webpack = require('webpack');
 
-module.exports = {
-  devtool: 'eval',
-  entry: [
+var entry = ['./demos/index.js'];
+
+if (process.env.NODE_ENV === 'development') {
+  entry = entry.concat([
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
-    './demos/index.js',
-  ],
+  ]);
+}
+
+module.exports = {
+  devtool: 'eval',
+  entry: entry,
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'demos'),
     filename: 'bundle.js',
-    publicPath: '/static/',
+    publicPath: '/demos/',
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
