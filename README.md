@@ -1,8 +1,8 @@
-# React-treeview ![npm](http://img.shields.io/npm/v/react-treeview.svg?style=flat) ![bower](http://img.shields.io/bower/v/react-treeview.svg?style=flat)
+# React-treeview [![npm version](https://badge.fury.io/js/react-motion.svg)](https://www.npmjs.com/package/react-treeview) [![Bower version](https://badge.fury.io/bo/react-treeview.svg)](http://badge.fury.io/bo/react-treeview)
 
 Easy, light, flexible treeview made with [React](http://facebook.github.io/react/).
 
-[Demo](http://chenglou.github.io/react-treeview/) (Also check out the `example/` folder for usage).
+[Demos](https://cdn.rawgit.com/chenglou/react-treeview/08c5abb767bb87af43c9f0a438cdf5f130cc9024/demos/index.html) from the [demos folder](https://github.com/chenglou/react-treeview/tree/08c5abb767bb87af43c9f0a438cdf5f130cc9024/demos).
 
 ## install
 
@@ -25,7 +25,7 @@ The CSS file:
 ## API
 
 #### &lt;TreeView />
-The component accepts [three props](https://github.com/chenglou/react-treeview/blob/master/react-treeview.jsx#L8-L10).
+The component accepts [three props](https://github.com/chenglou/react-treeview/blob/08c5abb767bb87af43c9f0a438cdf5f130cc9024/src/react-treeview.jsx#L5-L7).
 
 - `collapsed`: whether the node is collapsed or not.
 - `defaultCollapsed`: the [uncontrolled](http://facebook.github.io/react/docs/forms.html#uncontrolled-components) equivalent to `collapsed`.
@@ -33,22 +33,16 @@ The component accepts [three props](https://github.com/chenglou/react-treeview/b
 
 TreeViews can be naturally nested.
 
-**Note**: `this.transferPropsTo(<TreeView />)` will transfer the props to the arrow under the hood. All attributes and events naturally work on it.
+The extra properties transferred onto the arrow, so all attributes and events naturally work on it.
 
 ## Styling
-The CSS is flexible, commented and made to be easily customized. Feel free to inspect the demo's classes and check the [short CSS code](https://github.com/chenglou/react-treeview/blob/master/react-treeview.css).
+The CSS is flexible, commented and made to be easily customized. Feel free to inspect the demo's classes and check the [short CSS code](https://github.com/chenglou/react-treeview/blob/08c5abb767bb87af43c9f0a438cdf5f130cc9024/src/react-treeview.css).
 
-## Build it yourself
+## Build It Yourself/Run the Demos
 
-```sh
-npm run build
-```
+Build: `npm install && npm run prerelease`
 
-Or, if you don't use npm:
-```sh
-jsx react-treeview.jsx > react-treeview.js
-```
-(Make sure you got JSX installed somehow)
+Demos: `npm install && npm start && open http://localhost:3000`
 
 ## License
 
