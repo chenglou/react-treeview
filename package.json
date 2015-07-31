@@ -4,7 +4,7 @@
   "description": "Easy, light, flexible tree view made with React.",
   "main": "react-treeview.js",
   "directories": {
-    "examples": "examples"
+    "demos": "demos"
   },
   "scripts": {
     "start": "node server.js",
