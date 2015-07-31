@@ -1,6 +1,11 @@
-.idea
+.eslintrc
+.gitignore
+.npmignore
 bower.json
 bower_components
-examples
+build/
+demos
 react-treeview.sublime-*
-test
+server.js
+src/
+webpack.config.js

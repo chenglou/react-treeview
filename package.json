@@ -2,13 +2,15 @@
   "name": "react-treeview",
   "version": "0.3.12",
   "description": "Easy, light, flexible tree view made with React.",
-  "main": "react-treeview.js",
+  "main": "lib/react-treeview.js",
   "directories": {
     "demos": "demos"
   },
   "scripts": {
-    "start": "node server.js",
-    "lint": "eslint src"
+    "start": "NODE_ENV=development node server.js",
+    "lint": "eslint src demos",
+    "build-demos": "NODE_ENV=production webpack -p",
+    "prerelease": "babel src --out-dir lib && NODE_ENV=production webpack --config webpack.prod.config.js"
   },
   "repository": {
     "type": "git",
