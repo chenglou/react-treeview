@@ -3,7 +3,11 @@
   overflow-y: hidden;
 }
 
-/* style for the container */
+.tree-view_item {
+  /* immediate child of .tree-view, for styling convenience */
+}
+
+/* style for the children nodes container */
 .tree-view_children {
   margin-left: 16px;
 }
