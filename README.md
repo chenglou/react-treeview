@@ -1,4 +1,4 @@
-# React-treeview [![npm version](https://badge.fury.io/js/react-motion.svg)](https://www.npmjs.com/package/react-treeview) [![Bower version](https://badge.fury.io/bo/react-treeview.svg)](http://badge.fury.io/bo/react-treeview)
+# React-treeview [![npm version](https://badge.fury.io/js/react-treeview.svg)](https://www.npmjs.com/package/react-treeview) [![Bower version](https://badge.fury.io/bo/react-treeview.svg)](http://badge.fury.io/bo/react-treeview)
 
 Easy, light, flexible treeview made with [React](http://facebook.github.io/react/).
 
