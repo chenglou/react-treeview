@@ -36,7 +36,7 @@ TreeViews can be naturally nested.
 The extra properties transferred onto the arrow, so all attributes and events naturally work on it.
 
 ## Styling
-The CSS is flexible, commented and made to be easily customized. Feel free to inspect the demo's classes and check the [short CSS code](https://github.com/chenglou/react-treeview/blob/07132c6ad33a7b94d479eae60e84a0f02b2126da/src/react-treeview.css).
+The CSS is flexible, commented and made to be easily customized. Feel free to inspect the demo's classes and check the [short CSS code](https://github.com/chenglou/react-treeview/blob/07132c6ad33a7b94d479eae60e84a0f02b2126da/react-treeview.css).
 
 ## Build It Yourself/Run the Demos
 
