@@ -4,11 +4,9 @@
   "description": "Easy, light, flexible tree view made with React.",
   "main": "react-treeview.js",
   "directories": {
-    "example": "example",
-    "test": "test"
+    "examples": "examples"
   },
   "scripts": {
-    "test": "node_modules/.bin/selenium & node_modules/.bin/hux test/",
     "build": "node_modules/.bin/jsx react-treeview.jsx > react-treeview.js"
   },
   "repository": {
@@ -34,8 +32,6 @@
     "react": ">=0.12.0"
   },
   "devDependencies": {
-    "huxley": "^0.8.1",
-    "react-tools": "^0.12.1",
-    "selenium-server": "^2.44.0"
+    "react-tools": "^0.12.1"
   }
 }
