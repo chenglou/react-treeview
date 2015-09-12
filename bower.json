@@ -13,7 +13,10 @@
     "bower_components",
     "package.json",
     "demos",
-    "src"
+    "src",
+    "server.js",
+    "webpack.config.js",
+    "webpack.prod.config.js"
   ],
   "keywords": [
     "facebook",
