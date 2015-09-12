@@ -120,10 +120,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    return _react2['default'].createElement(
 	      'div',
-	      { className: "tree-view" },
+	      { className: 'tree-view' },
 	      _react2['default'].createElement(
 	        'div',
-	        { className: "tree-view_item" },
+	        { className: 'tree-view_item' },
 	        arrow,
 	        nodeLabel
 	      ),

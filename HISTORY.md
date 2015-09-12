@@ -1,4 +1,4 @@
-## 0.4.1 (September 12th 2015)
+## 0.4.2 (September 12th 2015)
 - Support for React 0.14, beta and rc.
 
 ## 0.4.0 (July 31th 2015)
