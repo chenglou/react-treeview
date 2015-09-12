@@ -1,3 +1,6 @@
+## 0.4.1 (September 12th 2015)
+- Support for React 0.14, beta and rc.
+
 ## 0.4.0 (July 31th 2015)
 - Repo revamp. No breaking change beside the change in directory structure. New location for npm: `lib/`. Location for bower & others: `build/`. The CSS is on root level.
 - Expose `tree-view_item` css class, the immediate child of `.tree-view`, for styling convenience.
