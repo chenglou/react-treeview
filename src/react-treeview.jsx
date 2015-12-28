@@ -38,9 +38,7 @@ const TreeView = React.createClass({
       <div
         {...rest}
         className={className + ' ' + arrowClassName}
-        onClick={this.handleClick}>
-        ▾
-      </div>;
+        onClick={this.handleClick}/>;
 
     return (
       <div className="tree-view">
