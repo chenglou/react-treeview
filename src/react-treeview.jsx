@@ -5,6 +5,8 @@ const TreeView = React.createClass({
     collapsed: PropTypes.bool,
     defaultCollapsed: PropTypes.bool,
     nodeLabel: PropTypes.node.isRequired,
+    className: PropTypes.string,
+    itemClassName: PropTypes.string,
   },
 
   getInitialState() {

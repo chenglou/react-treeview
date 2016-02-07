@@ -1,3 +1,8 @@
+## 0.4.3 (February 7th 2016)
+- Support for React 0.14 official.
+- New prop `itemClassName` to assign class name on the `TreeView` node itself. #28
+- Arrow symbol is now styled via CSS instead of hard-coded inside the DOM. This means you can now use your own styling for the arrow! #27
+
 ## 0.4.2 (September 12th 2015)
 - Support for React 0.14, beta and rc.
 

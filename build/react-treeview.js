@@ -76,7 +76,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  propTypes: {
 	    collapsed: _react.PropTypes.bool,
 	    defaultCollapsed: _react.PropTypes.bool,
-	    nodeLabel: _react.PropTypes.node.isRequired
+	    nodeLabel: _react.PropTypes.node.isRequired,
+	    className: _react.PropTypes.string,
+	    itemClassName: _react.PropTypes.string
 	  },
 	
 	  getInitialState: function getInitialState() {
@@ -112,13 +114,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      containerClassName += ' tree-view_children-collapsed';
 	    }
 	
-	    var arrow = _react2['default'].createElement(
-	      'div',
-	      _extends({}, rest, {
-	        className: className + ' ' + arrowClassName,
-	        onClick: this.handleClick }),
-	      '▾'
-	    );
+	    var arrow = _react2['default'].createElement('div', _extends({}, rest, {
+	      className: className + ' ' + arrowClassName,
+	      onClick: this.handleClick }));
 	
 	    return _react2['default'].createElement(
 	      'div',

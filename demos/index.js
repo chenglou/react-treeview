@@ -1,6 +1,7 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Controlled from './Controlled';
 import Uncontrolled from './Uncontrolled';
 
-React.render(<Controlled />, document.getElementById('controlled'));
-React.render(<Uncontrolled />, document.getElementById('uncontrolled'));
+ReactDOM.render(<Controlled />, document.getElementById('controlled'));
+ReactDOM.render(<Uncontrolled />, document.getElementById('uncontrolled'));
