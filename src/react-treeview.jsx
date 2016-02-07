@@ -22,6 +22,7 @@ const TreeView = React.createClass({
     const {
       collapsed = this.state.collapsed,
       className = '',
+      itemClassName = '',
       nodeLabel,
       children,
       ...rest,
@@ -42,7 +43,7 @@ const TreeView = React.createClass({
 
     return (
       <div className="tree-view">
-        <div className="tree-view_item">
+        <div className={'tree-view_item ' + itemClassName}>
           {arrow}
           {nodeLabel}
         </div>

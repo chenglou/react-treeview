@@ -98,10 +98,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var collapsed = _props2$collapsed === undefined ? this.state.collapsed : _props2$collapsed;
 	    var _props2$className = _props2.className;
 	    var className = _props2$className === undefined ? '' : _props2$className;
+	    var _props2$itemClassName = _props2.itemClassName;
+	    var itemClassName = _props2$itemClassName === undefined ? '' : _props2$itemClassName;
 	    var nodeLabel = _props2.nodeLabel;
 	    var children = _props2.children;
 	
-	    var rest = _objectWithoutProperties(_props2, ['collapsed', 'className', 'nodeLabel', 'children']);
+	    var rest = _objectWithoutProperties(_props2, ['collapsed', 'className', 'itemClassName', 'nodeLabel', 'children']);
 	
 	    var arrowClassName = 'tree-view_arrow';
 	    var containerClassName = 'tree-view_children';
@@ -123,7 +125,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      { className: 'tree-view' },
 	      _react2['default'].createElement(
 	        'div',
-	        { className: 'tree-view_item' },
+	        { className: 'tree-view_item ' + itemClassName },
 	        arrow,
 	        nodeLabel
 	      ),
