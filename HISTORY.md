@@ -1,3 +1,6 @@
+## 0.4.4 (April 18th 2016)
+- Bump React version requirement.
+
 ## 0.4.3 (February 7th 2016)
 - Support for React 0.14 official.
 - New prop `itemClassName` to assign class name on the `TreeView` node itself. #28
