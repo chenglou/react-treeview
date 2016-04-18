@@ -1,3 +1,6 @@
+## 0.4.5 (April 18th 2016)
+- Fix build output not showing. Sorry!
+
 ## 0.4.4 (April 18th 2016)
 - Bump React version requirement.
 
