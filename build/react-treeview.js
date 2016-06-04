@@ -75,6 +75,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  propTypes: {
 	    collapsed: _react.PropTypes.bool,
+	    lazy: _react.PropTypes.bool,
 	    defaultCollapsed: _react.PropTypes.bool,
 	    nodeLabel: _react.PropTypes.node.isRequired,
 	    className: _react.PropTypes.string,
@@ -98,6 +99,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var _props2 = this.props;
 	    var _props2$collapsed = _props2.collapsed;
 	    var collapsed = _props2$collapsed === undefined ? this.state.collapsed : _props2$collapsed;
+	    var lazy = _props2.lazy;
 	    var _props2$className = _props2.className;
 	    var className = _props2$className === undefined ? '' : _props2$className;
 	    var _props2$itemClassName = _props2.itemClassName;
@@ -105,7 +107,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var nodeLabel = _props2.nodeLabel;
 	    var children = _props2.children;
 	
-	    var rest = _objectWithoutProperties(_props2, ['collapsed', 'className', 'itemClassName', 'nodeLabel', 'children']);
+	    var rest = _objectWithoutProperties(_props2, ['collapsed', 'lazy', 'className', 'itemClassName', 'nodeLabel', 'children']);
 	
 	    var arrowClassName = 'tree-view_arrow';
 	    var containerClassName = 'tree-view_children';
@@ -130,7 +132,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      _react2['default'].createElement(
 	        'div',
 	        { className: containerClassName },
-	        children
+	        lazy && collapsed ? null : children
 	      )
 	    );
 	  }

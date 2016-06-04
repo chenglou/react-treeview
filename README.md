@@ -28,6 +28,7 @@ The CSS file:
 The component accepts [these props](https://github.com/chenglou/react-treeview/blob/aa72ed8b9e0b31fabc09e2f8bd4084947d48bb09/src/react-treeview.jsx#L5-L9).
 
 - `collapsed`: whether the node is collapsed or not.
+- `lazy`: whether to add children to the DOM before the tree is expanded. Defaults to `false`.
 - `defaultCollapsed`: the [uncontrolled](http://facebook.github.io/react/docs/forms.html#uncontrolled-components) equivalent to `collapsed`.
 - `nodeLabel`: the component or string (or anything renderable) that's displayed beside the TreeView arrow.
 - `itemClassName`: the class name of the tree view item div.
