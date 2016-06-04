@@ -3,6 +3,7 @@ import React, {PropTypes} from 'react';
 const TreeView = React.createClass({
   propTypes: {
     collapsed: PropTypes.bool,
+    lazy: PropTypes.bool,
     defaultCollapsed: PropTypes.bool,
     nodeLabel: PropTypes.node.isRequired,
     className: PropTypes.string,
@@ -23,6 +24,7 @@ const TreeView = React.createClass({
   render() {
     const {
       collapsed = this.state.collapsed,
+      lazy,
       className = '',
       itemClassName = '',
       nodeLabel,
@@ -50,7 +52,7 @@ const TreeView = React.createClass({
           {nodeLabel}
         </div>
         <div className={containerClassName}>
-          {children}
+          {lazy && collapsed ? null : children}
         </div>
       </div>
     );
