@@ -50,7 +50,7 @@ const TreeView = React.createClass({
           {nodeLabel}
         </div>
         <div className={containerClassName}>
-          {children}
+          {collapsed ? null : children}
         </div>
       </div>
     );
