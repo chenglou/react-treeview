@@ -27,6 +27,7 @@ const TreeView = React.createClass({
       itemClassName = '',
       nodeLabel,
       children,
+      defaultCollapsed,
       ...rest,
     } = this.props;
 
