@@ -23,6 +23,7 @@ const TreeView = React.createClass({
   render() {
     const {
       collapsed = this.state.collapsed,
+      defaultCollapsed,
       className = '',
       itemClassName = '',
       nodeLabel,
