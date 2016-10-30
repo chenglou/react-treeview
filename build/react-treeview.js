@@ -104,8 +104,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var itemClassName = _props2$itemClassName === undefined ? '' : _props2$itemClassName;
 	    var nodeLabel = _props2.nodeLabel;
 	    var children = _props2.children;
+	    var defaultCollapsed = _props2.defaultCollapsed;
 	
-	    var rest = _objectWithoutProperties(_props2, ['collapsed', 'className', 'itemClassName', 'nodeLabel', 'children']);
+	    var rest = _objectWithoutProperties(_props2, ['collapsed', 'className', 'itemClassName', 'nodeLabel', 'children', 'defaultCollapsed']);
 	
 	    var arrowClassName = 'tree-view_arrow';
 	    var containerClassName = 'tree-view_children';
@@ -130,7 +131,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      _react2['default'].createElement(
 	        'div',
 	        { className: containerClassName },
-	        children
+	        collapsed ? null : children
 	      )
 	    );
 	  }
