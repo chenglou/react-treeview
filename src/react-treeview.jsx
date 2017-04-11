@@ -1,6 +1,8 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import CreateReactClass from 'create-react-class';
 
-const TreeView = React.createClass({
+const TreeView = CreateReactClass({
   propTypes: {
     collapsed: PropTypes.bool,
     defaultCollapsed: PropTypes.bool,

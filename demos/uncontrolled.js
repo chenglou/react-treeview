@@ -1,5 +1,6 @@
 import React from 'react';
 import TreeView from '../src/react-treeview';
+import CreateReactClass from 'create-react-class';
 
 // This example data format is totally arbitrary. No data massaging is
 // required and you use regular js in `render` to iterate through and
@@ -25,7 +26,7 @@ const dataSource = [
 // For the sake of simplicity, we're gonna use `defaultCollapsed`. Usually, a
 // [controlled component](http://facebook.github.io/react/docs/forms.html#controlled-components)
 // is preferred.
-const CompanyPeople = React.createClass({
+const CompanyPeople = CreateReactClass({
   render() {
     return (
       <div>
