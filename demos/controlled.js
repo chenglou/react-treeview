@@ -1,5 +1,6 @@
 import React from 'react';
 import TreeView from '../src/react-treeview';
+import CreateReactClass from 'create-react-class';
 
 // This example data format is totally arbitrary. No data massaging is
 // required and you use regular js in `render` to iterate through and
@@ -14,7 +15,7 @@ const dataSource = [
 // (http://facebook.github.io/react/docs/forms.html#controlled-components), has
 // many benefits. Among others, you can expand/collapse everything (i.e. easily
 // trigger those somewhere else).
-const Lists = React.createClass({
+const Lists = CreateReactClass({
   getInitialState() {
     return {
       collapsedBookkeeping: dataSource.map(() => false),
