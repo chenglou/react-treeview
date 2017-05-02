@@ -25,7 +25,7 @@ const dataSource = [
 // For the sake of simplicity, we're gonna use `defaultCollapsed`. Usually, a
 // [controlled component](http://facebook.github.io/react/docs/forms.html#controlled-components)
 // is preferred.
-const CompanyPeople = React.createClass({
+class CompanyPeople extends React.Component {
   render() {
     return (
       <div>
@@ -49,7 +49,7 @@ const CompanyPeople = React.createClass({
         })}
       </div>
     );
-  },
-});
+  }
+}
 
 export default CompanyPeople;
