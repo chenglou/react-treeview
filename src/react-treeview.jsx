@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 
 const TreeView = React.createClass({
   propTypes: {
@@ -7,14 +7,16 @@ const TreeView = React.createClass({
     nodeLabel: PropTypes.node.isRequired,
     className: PropTypes.string,
     itemClassName: PropTypes.string,
+    childrenClassName: PropTypes.string,
+    treeViewClassName: PropTypes.string,
   },
 
   getInitialState() {
-    return {collapsed: this.props.defaultCollapsed};
+    return { collapsed: this.props.defaultCollapsed };
   },
 
   handleClick(...args) {
-    this.setState({collapsed: !this.state.collapsed});
+    this.setState({ collapsed: !this.state.collapsed });
     if (this.props.onClick) {
       this.props.onClick(...args);
     }
@@ -25,10 +27,12 @@ const TreeView = React.createClass({
       collapsed = this.state.collapsed,
       className = '',
       itemClassName = '',
+      treeViewClassName = '',
+      childrenClassName = '',
       nodeLabel,
       children,
       defaultCollapsed,
-      ...rest,
+      ...rest
     } = this.props;
 
     let arrowClassName = 'tree-view_arrow';
@@ -38,19 +42,21 @@ const TreeView = React.createClass({
       containerClassName += ' tree-view_children-collapsed';
     }
 
-    const arrow =
+    const arrow = (
       <div
         {...rest}
         className={className + ' ' + arrowClassName}
-        onClick={this.handleClick}/>;
+        onClick={this.handleClick}
+      />
+    );
 
     return (
-      <div className="tree-view">
+      <div className={'tree-view ' + treeViewClassName}>
         <div className={'tree-view_item ' + itemClassName}>
           {arrow}
           {nodeLabel}
         </div>
-        <div className={containerClassName}>
+        <div className={containerClassName + ' ' + childrenClassName}>
           {collapsed ? null : children}
         </div>
       </div>
