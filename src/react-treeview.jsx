@@ -1,24 +1,32 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const TreeView = React.createClass({
-  propTypes: {
-    collapsed: PropTypes.bool,
-    defaultCollapsed: PropTypes.bool,
-    nodeLabel: PropTypes.node.isRequired,
-    className: PropTypes.string,
-    itemClassName: PropTypes.string,
-  },
+class TreeView extends React.Component {
+  constructor(props) {
+    super(props);
 
-  getInitialState() {
-    return {collapsed: this.props.defaultCollapsed};
-  },
+    this.state = {
+      collapsed: this.props.defaultCollapsed
+    };
+
+    this.handleClick = this.handleClick.bind(this);
+  }
 
   handleClick(...args) {
     this.setState({collapsed: !this.state.collapsed});
     if (this.props.onClick) {
       this.props.onClick(...args);
     }
-  },
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.props.defaultCollapsed !== nextProps.defaultCollapsed
+        || this.props.collapsed !== nextProps.collapsed
+        || this.props.nodeLabel !== nextProps.nodeLabel
+        || this.props.className !== nextProps.className
+        || this.props.itemClassName !== nextProps.itemClassName
+        || this.state.collapsed !== nextState.collapsed
+  }
 
   render() {
     const {
@@ -27,7 +35,6 @@ const TreeView = React.createClass({
       itemClassName = '',
       nodeLabel,
       children,
-      defaultCollapsed,
       ...rest,
     } = this.props;
 
@@ -55,7 +62,15 @@ const TreeView = React.createClass({
         </div>
       </div>
     );
-  },
-});
+  }
+}
+
+TreeView.propTypes = {
+  collapsed: PropTypes.bool,
+  defaultCollapsed: PropTypes.bool,
+  nodeLabel: PropTypes.node.isRequired,
+  className: PropTypes.string,
+  itemClassName: PropTypes.string,
+};
 
 export default TreeView;
