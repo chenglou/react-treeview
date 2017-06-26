@@ -14,24 +14,29 @@ const dataSource = [
 // (http://facebook.github.io/react/docs/forms.html#controlled-components), has
 // many benefits. Among others, you can expand/collapse everything (i.e. easily
 // trigger those somewhere else).
-const Lists = React.createClass({
-  getInitialState() {
-    return {
-      collapsedBookkeeping: dataSource.map(() => false),
+class Lists extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      collapsedBookkeeping: dataSource.map(() => false)
     };
-  },
+    this.handleClick = this.handleClick.bind(this);
+    this.collapseAll = this.collapseAll.bind(this);
+  }
 
   handleClick(i) {
     let [...collapsedBookkeeping] = this.state.collapsedBookkeeping;
     collapsedBookkeeping[i] = !collapsedBookkeeping[i];
     this.setState({collapsedBookkeeping: collapsedBookkeeping});
-  },
+  }
 
   collapseAll() {
     this.setState({
       collapsedBookkeeping: this.state.collapsedBookkeeping.map(() => true),
     });
-  },
+  }
 
   render() {
     const collapsedBookkeeping = this.state.collapsedBookkeeping;
@@ -57,7 +62,7 @@ const Lists = React.createClass({
         })}
       </div>
     );
-  },
-});
+  }
+}
 
 export default Lists;

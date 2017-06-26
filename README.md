@@ -30,7 +30,9 @@ The component accepts [these props](https://github.com/chenglou/react-treeview/b
 - `collapsed`: whether the node is collapsed or not.
 - `defaultCollapsed`: the [uncontrolled](http://facebook.github.io/react/docs/forms.html#uncontrolled-components) equivalent to `collapsed`.
 - `nodeLabel`: the component or string (or anything renderable) that's displayed beside the TreeView arrow.
-- `itemClassName`: the class name of the tree view item div.
+- `itemClassName`: the class name of the `.tree-view_item` div.
+- `treeViewClassName`: the class name of the `.tree-view` div.
+- `childrenClassName`: the class name of the `.tree-view_children` item div.
 
 TreeViews can be naturally nested.
 
