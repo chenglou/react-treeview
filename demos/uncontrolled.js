@@ -9,15 +9,15 @@ const dataSource = [
     type: 'Employees',
     collapsed: false,
     people: [
-      {name: 'Paul Gordon', age: 25, sex: 'male', role: 'coder', collapsed: false},
-      {name: 'Sarah Lee', age: 23, sex: 'female', role: 'jqueryer', collapsed: false},
+      {name: 'Paul Gordon', age: 29, sex: 'male', role: 'coder', collapsed: false},
+      {name: 'Sarah Lee', age: 27, sex: 'female', role: 'ocamler', collapsed: false},
     ],
   },
   {
     type: 'CEO',
     collapsed: false,
     people: [
-      {name: 'Drew Anderson', age: 35, sex: 'male', role: 'boss', collapsed: false},
+      {name: 'Drew Anderson', age: 39, sex: 'male', role: 'boss', collapsed: false},
     ],
   },
 ];
