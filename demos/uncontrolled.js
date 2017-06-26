@@ -10,7 +10,7 @@ const dataSource = [
     collapsed: false,
     people: [
       {name: 'Paul Gordon', age: 25, sex: 'male', role: 'coder', collapsed: false},
-      {name: 'Sarah Lee', age: 23, sex: 'female', role: 'jqueryer', collapsed: false},
+      {name: 'Sarah Lee', age: 23, sex: 'female', role: 'jqueryer', collapsed: false [{name: 'Yogesh Shinde', age: 23, sex: 'female', role: 'jqueryer', collapsed: false}]},
     ],
   },
   {
