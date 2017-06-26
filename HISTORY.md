@@ -1,5 +1,9 @@
-## 0.4.5 (April 18th 2016)
-- Fix build output not showing. Sorry!
+## 0.4.7 (June 25th 2017)
+- Fixes react deprecation warnings
+- New props for customization: `treeViewClassName` and `childrenClassName`. See the README for more info.
+
+## 0.4.6 (October 29 2016)
+- Misc fixes.
 
 ## 0.4.4 (April 18th 2016)
 - Bump React version requirement.
