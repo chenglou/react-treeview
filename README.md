@@ -25,7 +25,7 @@ The CSS file:
 ## API
 
 #### &lt;TreeView />
-The component accepts [these props](https://github.com/chenglou/react-treeview/blob/aa72ed8b9e0b31fabc09e2f8bd4084947d48bb09/src/react-treeview.jsx#L5-L9).
+The component accepts [these props](https://github.com/chenglou/react-treeview/blob/f75fb4e2706f3e9087bcf371308e85154a1946da/src/react-treeview.jsx#L6-L12).
 
 - `collapsed`: whether the node is collapsed or not.
 - `defaultCollapsed`: the [uncontrolled](http://facebook.github.io/react/docs/forms.html#uncontrolled-components) equivalent to `collapsed`.
