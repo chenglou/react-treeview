@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class TreeView extends React.Component {
+class TreeView extends React.PureComponent {
   propTypes: {
     collapsed: PropTypes.bool,
     defaultCollapsed: PropTypes.bool,
