@@ -17,7 +17,7 @@ class TreeView extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    const collapsed = props.defaultCollapsed;
+    const collapsed = props.defaultCollapsed === true;
     this.state = {
       collapsed,
       rotateAnimation: new Animated.Value(!collapsed ? 0 : 90),
