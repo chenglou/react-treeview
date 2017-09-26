@@ -2,26 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class TreeView extends React.PureComponent {
-  propTypes: {
-    collapsed: PropTypes.bool,
-    defaultCollapsed: PropTypes.bool,
-    nodeLabel: PropTypes.node.isRequired,
-    className: PropTypes.string,
-    itemClassName: PropTypes.string,
-    childrenClassName: PropTypes.string,
-    treeViewClassName: PropTypes.string,
-  }
-
   constructor(props) {
     super(props);
 
     this.state = {
       collapsed: props.defaultCollapsed
     };
-    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(...args) {
+  handleClick = (...args) => {
     this.setState({ collapsed: !this.state.collapsed });
     if (this.props.onClick) {
       this.props.onClick(...args);
@@ -31,10 +20,10 @@ class TreeView extends React.PureComponent {
   render() {
     const {
       collapsed = this.state.collapsed,
-      className = '',
-      itemClassName = '',
-      treeViewClassName = '',
-      childrenClassName = '',
+      className,
+      itemClassName,
+      treeViewClassName,
+      childrenClassName,
       nodeLabel,
       children,
       defaultCollapsed,
@@ -71,3 +60,21 @@ class TreeView extends React.PureComponent {
 }
 
 export default TreeView;
+
+
+TreeView.propTypes = {
+  collapsed: PropTypes.bool,
+  defaultCollapsed: PropTypes.bool,
+  nodeLabel: PropTypes.node.isRequired,
+  className: PropTypes.string,
+  itemClassName: PropTypes.string,
+  childrenClassName: PropTypes.string,
+  treeViewClassName: PropTypes.string,
+}
+
+TreeView.defaulProps = {
+  className: '',
+  itemClassName: '',
+  treeViewClassName: '',
+  childrenClassName: '',
+}
