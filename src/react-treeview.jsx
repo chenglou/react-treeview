@@ -58,7 +58,7 @@ class TreeView extends React.PureComponent {
 
     return (
       <div className={'tree-view ' + treeViewClassName}>
-        <div className={'tree-view_item ' + itemClassName}>
+        <div className={'tree-view_item ' + itemClassName} title={nodeLabel}>
           {arrow}
           {nodeLabel}
         </div>
