@@ -33,6 +33,7 @@ The component accepts [these props](https://github.com/chenglou/react-treeview/b
 - `itemClassName`: the class name of the `.tree-view_item` div.
 - `treeViewClassName`: the class name of the `.tree-view` div.
 - `childrenClassName`: the class name of the `.tree-view_children` item div.
+- `onClick`: callback triggered when the arrow is clicked.
 
 TreeViews can be naturally nested.
 
